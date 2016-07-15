@@ -8,12 +8,28 @@ import org.testng.annotations.Test;
  */
 public class FieldTest {
 
-    @Test
-    public void testShowCoordinates(){
-        // given
-        Field field = new Field("A", "1");
+    @DataProvider
+    private final static Object[][] getFields() {
+        return new Object[][]{
+                {new Field("A", "1"), "A1"},
+                {new Field("B", "2"), "B2"},
+                {new Field("C", "8"), "C8"},
+                {new Field("D", "5"), "D5"},
+                {new Field("E", "10"), "E10"},
+                {new Field("F", "3"), "F3"},
+                {new Field("G", "4"), "G4"},
+                {new Field("H", "7"), "H7"},
+                {new Field("I", "6"), "I6"},
+                {new Field("J", "9"), "J9"},
+        };
+    }
 
+
+    @Test(dataProvider = "getFields")
+    public void testShowCoordinates(Field field, String expectedCoordinates) {
+        // given
         // when - then
-        Assert.assertEquals(field.showCoordinates(), "A1");
+        Assert.assertEquals(field.showCoordinates(), expectedCoordinates);
     }
 }
+

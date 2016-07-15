@@ -13,6 +13,6 @@ public class Field {
     }
 
     public String showCoordinates() {
-        return "A1";
+        return letter.concat(digit);
     }
 }
