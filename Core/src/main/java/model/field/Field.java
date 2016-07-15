@@ -6,6 +6,7 @@ package model.field;
 public class Field {
     private String letter;
     private String digit;
+    private Boolean isOccupied;;
 
     public Field(String letter, String digit) {
         this.letter = letter;
@@ -14,5 +15,13 @@ public class Field {
 
     public String showCoordinates() {
         return letter.concat(digit);
+    }
+
+    public void makeOccupied() {
+        this.isOccupied = Boolean.TRUE;
+    }
+
+    public Boolean isOccupied(){
+        return isOccupied;
     }
 }

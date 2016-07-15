@@ -1,7 +1,11 @@
+package model;
+
 import model.field.Field;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created by Hawk on 2016-07-15.
@@ -29,7 +33,19 @@ public class FieldTest {
     public void testShowCoordinates(Field field, String expectedCoordinates) {
         // given
         // when - then
-        Assert.assertEquals(field.showCoordinates(), expectedCoordinates);
+        assertEquals(field.showCoordinates(), expectedCoordinates);
+    }
+
+    @Test
+    public void testIsOccupied() {
+        // given
+        Field field = new Field("B", "2");
+
+        // when
+        field.makeOccupied();
+
+        // then
+        assertTrue(field.isOccupied());
     }
 }
 
