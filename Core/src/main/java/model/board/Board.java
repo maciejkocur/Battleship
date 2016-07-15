@@ -17,6 +17,6 @@ public class Board {
     }
 
     public Field getFieldForCoordinates(String letter, String digit) {
-        return new Field(letter, digit);
+        return fields.get(letter.concat(digit));
     }
 }

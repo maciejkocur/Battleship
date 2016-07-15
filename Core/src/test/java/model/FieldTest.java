@@ -1,6 +1,7 @@
 package model;
 
 import model.field.Field;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -46,6 +47,24 @@ public class FieldTest {
 
         // then
         assertTrue(field.isOccupied());
+    }
+
+    @Test
+    public void testEqualityOfFields(){
+        // given
+        Field firstFieldA1 = new Field("A", "1");
+        Field secondFieldA1 = new Field("A", "1");
+        Field thirdFieldA1 = new Field("A", "1");
+
+
+        // when - then
+        // reflexive
+        assertEquals(firstFieldA1, firstFieldA1);
+        // symmetric
+        assertEquals(firstFieldA1, secondFieldA1);
+        assertEquals(secondFieldA1, firstFieldA1);
+        // transitive
+        assertEquals(firstFieldA1, thirdFieldA1);
     }
 }
 

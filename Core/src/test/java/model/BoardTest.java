@@ -2,6 +2,7 @@ package model;
 
 import model.board.Board;
 import model.field.Field;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -20,6 +21,6 @@ public class BoardTest {
         board.placePlayerMove(field);
 
         // then
-        board.getFieldForCoordinates("A", "1");
+        Assert.assertEquals(board.getFieldForCoordinates("A", "1"), field);
     }
 }
