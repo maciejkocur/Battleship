@@ -1,9 +1,12 @@
 package model;
 
 import model.board.Board;
+import model.field.Coordinate;
 import model.field.Field;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import static model.field.Sign.A;
 
 /**
  * Created by Hawk on 2016-07-15.
@@ -11,16 +14,17 @@ import org.testng.annotations.Test;
 public class BoardTest {
 
     @Test
-    public void testPlacePlayerMove() {
+    public void testPlacePlayerMoveAndGetCoordinates() {
         // given
         Board board = new Board();
-        Field field = new Field("A", "1");
-        field.makeOccupied();
+        Coordinate coordinate = new Coordinate(A, "1");
+        Field field = new Field(coordinate, Boolean.TRUE);
 
         // when
         board.placePlayerMove(field);
 
         // then
-        Assert.assertEquals(board.getFieldForCoordinates("A", "1"), field);
+        Assert.assertEquals(board.getFieldForCoordinate(coordinate), field);
     }
+
 }

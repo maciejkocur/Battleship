@@ -1,5 +1,7 @@
 package model.board;
 
+import model.board.initializer.BoardFieldsInitializer;
+import model.field.Coordinate;
 import model.field.Field;
 
 import java.util.Map;
@@ -10,13 +12,17 @@ import java.util.TreeMap;
  */
 public class Board {
 
-    private Map<String, Field> fields = new TreeMap<>();
+    private Map<Coordinate, Field> fields = BoardFieldsInitializer.getInitialFields();
 
     public void placePlayerMove(Field field) {
         fields.put(field.showCoordinates(), field);
     }
 
-    public Field getFieldForCoordinates(String letter, String digit) {
-        return fields.get(letter.concat(digit));
+    public Field getFieldForCoordinate(Coordinate coordinate) {
+        return fields.get(coordinate);
+    }
+
+    public String display() {
+        return fields.toString();
     }
 }

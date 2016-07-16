@@ -1,6 +1,8 @@
 package model.board.initializer;
 
+import model.field.Coordinate;
 import model.field.Field;
+import model.field.Sign;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -10,20 +12,14 @@ import java.util.TreeMap;
  */
 public class BoardFieldsInitializer {
 
-    public Map<String, Field> initializeFields() {
-        Map<String, Field> fields = new TreeMap<>();
-            for(Letter letter : Letter.values()){
-                for(int i=1; i<=10; i++)
-                    fields.put(generateCoordinate(letter, i), createField(letter, i));
+    public static Map<Coordinate, Field> getInitialFields() {
+        Map<Coordinate, Field> fields = new TreeMap<>();
+            for(Sign sign : Sign.values()){
+                for(int i=1; i<=10; i++) {
+                    Coordinate coordinate = new Coordinate(sign, String.valueOf(i));
+                    fields.put(coordinate, new Field(coordinate));
+                }
             }
         return fields;
-    }
-
-    private String generateCoordinate(Letter letter, Integer digit){
-        return letter.toString().concat(digit.toString());
-    }
-
-    private Field createField(Letter letter, Integer digit){
-        return new Field(letter.toString(), digit.toString());
     }
 }

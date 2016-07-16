@@ -16,7 +16,7 @@ public class BoardFieldsInitializerTest {
         BoardFieldsInitializer boardFieldsInitializer = new BoardFieldsInitializer();
 
         // when - then
-        assertSame(boardFieldsInitializer.initializeFields().size(), 100);
+        assertSame(boardFieldsInitializer.getInitialFields().size(), 100);
     }
 
 
