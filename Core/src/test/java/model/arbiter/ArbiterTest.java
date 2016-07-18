@@ -1,16 +1,17 @@
 package model.arbiter;
 
 
-import model.field.Coordinate;
-import model.field.Sign;
-import org.testng.annotations.*;
+import model.coordinate.Coordinate;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
-import static org.testng.AssertJUnit.fail;
+import static model.coordinate.Sign.A;
+import static model.coordinate.Sign.D;
+import static org.testng.AssertJUnit.*;
 
 public class ArbiterTest {
 
@@ -19,7 +20,7 @@ public class ArbiterTest {
     @BeforeMethod
     public void listInit() {
         coordinates = new ArrayList<>();
-        coordinates.add(new Coordinate(Sign.A, "1"));
+        coordinates.add(new Coordinate(A, "1"));
     }
 
     @AfterMethod
@@ -36,8 +37,8 @@ public class ArbiterTest {
         arbiter.addCoordinates(coordinates);
 
         // Then
-        assertTrue(arbiter.contains(new Coordinate(Sign.A, "1")));
-        assertFalse(arbiter.contains(new Coordinate(Sign.D, "10")));
+        assertTrue(arbiter.contains(new Coordinate(A, "1")));
+        assertFalse(arbiter.contains(new Coordinate(D, "10")));
     }
 
     @Test(dependsOnMethods = "addCoordinatesTest")
@@ -47,22 +48,22 @@ public class ArbiterTest {
         arbiter.addCoordinates(coordinates);
 
         // When
-        arbiter.updateCoordinatesForMove(new Coordinate(Sign.A, "1"));
+        arbiter.updateCoordinatesForMove(new Coordinate(A, "1"));
 
         // Then
-        assertFalse(arbiter.contains(new Coordinate(Sign.A, "1")));
+        assertFalse(arbiter.contains(new Coordinate(A, "1")));
     }
 
     @Test(dependsOnMethods = "addCoordinatesTest")
-    public void removeNonexistentCoordinateTest(){
+    public void removeNonexistentCoordinateTest() {
         // Given
-        Arbiter  arbiter = new Arbiter();
+        Arbiter arbiter = new Arbiter();
         arbiter.addCoordinates(coordinates);
 
         // When
         try {
-            arbiter.updateCoordinatesForMove(new Coordinate(Sign.D,"3"));
-        } catch (Exception e){
+            arbiter.updateCoordinatesForMove(new Coordinate(D, "3"));
+        } catch (Exception e) {
             fail();
         }
     }
@@ -82,7 +83,7 @@ public class ArbiterTest {
         // Given
         Arbiter arbiter = new Arbiter();
         arbiter.addCoordinates(coordinates);
-        arbiter.updateCoordinatesForMove(new Coordinate(Sign.A, "1"));
+        arbiter.updateCoordinatesForMove(new Coordinate(A, "1"));
 
         // Then
         assertTrue(arbiter.checkWinningCondition());

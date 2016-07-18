@@ -1,6 +1,6 @@
 package model.arbiter;
 
-import model.field.Coordinate;
+import model.coordinate.Coordinate;
 
 import java.util.List;
 
