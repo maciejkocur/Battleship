@@ -1,6 +1,5 @@
-package model;
+package model.board.initializer;
 
-import model.board.initializer.BoardFieldsInitializer;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertSame;

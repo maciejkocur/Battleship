@@ -12,15 +12,7 @@
     </parent>
 
     <groupId>pl.codingbad</groupId>
-    <artifactId>battle-ships-core</artifactId>
+    <artifactId>battle-ships-util</artifactId>
     <version>${project.version}</version>
-
-    <dependencies>
-        <dependency>
-            <groupId>pl.codingbad</groupId>
-            <artifactId>battle-ships-util</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 
 </project>

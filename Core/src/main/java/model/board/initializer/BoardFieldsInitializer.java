@@ -1,8 +1,8 @@
 package model.board.initializer;
 
-import model.field.Coordinate;
+import model.coordinate.Coordinate;
 import model.field.Field;
-import model.field.Sign;
+import model.coordinate.Sign;
 
 import java.util.Map;
 import java.util.TreeMap;
