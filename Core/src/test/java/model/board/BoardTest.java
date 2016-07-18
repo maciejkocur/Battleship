@@ -1,12 +1,11 @@
-package model;
+package model.board;
 
-import model.board.Board;
-import model.field.Coordinate;
+import model.coordinate.Coordinate;
 import model.field.Field;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static model.field.Sign.A;
+import static model.coordinate.Sign.A;
 
 /**
  * Created by Hawk on 2016-07-15.

@@ -1,5 +1,7 @@
 package model.field;
 
+import model.coordinate.Coordinate;
+
 /**
  * Created by Hawk on 2016-07-15.
  */

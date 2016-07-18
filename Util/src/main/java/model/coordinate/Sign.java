@@ -1,4 +1,4 @@
-package model.field;
+package model.coordinate;
 
 /**
  * Created by Hawk on 2016-07-15.

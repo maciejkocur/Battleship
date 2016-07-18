@@ -1,4 +1,4 @@
-package model.field;
+package model.coordinate;
 
 
 public class Coordinate implements Comparable<Coordinate> {

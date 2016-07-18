@@ -1,10 +1,9 @@
-package model;
+package model.field;
 
-import model.field.Coordinate;
-import model.field.Field;
+import model.coordinate.Coordinate;
 import org.testng.annotations.Test;
 
-import static model.field.Sign.A;
+import static model.coordinate.Sign.A;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -18,7 +17,6 @@ public class FieldTest {
         Field firstFieldA1 = new Field(new Coordinate(A, "1"));
         Field secondFieldA1 = new Field(new Coordinate(A, "1"));
         Field thirdFieldA1 = new Field(new Coordinate(A, "1"));
-
 
         // when - then
         // reflexive

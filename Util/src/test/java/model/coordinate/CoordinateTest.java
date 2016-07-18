@@ -1,13 +1,11 @@
-package model;
+package model.coordinate;
 
-import model.field.Coordinate;
+import model.coordinate.Coordinate;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import javax.crypto.CipherOutputStream;
-
-import static model.field.Sign.A;
-import static model.field.Sign.H;
+import static model.coordinate.Sign.A;
+import static model.coordinate.Sign.H;
 import static org.testng.Assert.assertEquals;
 
 public class CoordinateTest {
