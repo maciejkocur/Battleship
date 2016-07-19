@@ -15,7 +15,7 @@ public class Gui extends Application{
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("gui.fxml"));
 
         Scene scene = new Scene(root, 1200, 800);
-
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Battleship");
         primaryStage.setScene(scene);
         primaryStage.show();
