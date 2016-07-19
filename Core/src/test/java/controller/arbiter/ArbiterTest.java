@@ -4,6 +4,7 @@ package controller.arbiter;
 import model.coordinate.Coordinate;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -41,49 +42,42 @@ public class ArbiterTest {
         assertFalse(arbiter.contains(new Coordinate(D, 10)));
     }
 
-    @Test(dependsOnMethods = "addCoordinatesTest")
-    public void removeCoordinateFromArbiterTest() {
-        // Given
-        Arbiter arbiter = new Arbiter();
-        arbiter.addCoordinates(coordinates);
-
-        // When
-        arbiter.updateCoordinatesForMove(new Coordinate(A, 1));
-
-        // Then
-        assertFalse(arbiter.contains(new Coordinate(A, 1)));
-    }
-
-    @Test(dependsOnMethods = "addCoordinatesTest")
-    public void removeNonexistentCoordinateTest() {
-        // Given
-        Arbiter arbiter = new Arbiter();
-        arbiter.addCoordinates(coordinates);
-
-        // When
-        try {
-            arbiter.updateCoordinatesForMove(new Coordinate(D, 3));
-        } catch (Exception e) {
-            fail();
-        }
-    }
-
-    @Test(dependsOnMethods = "removeCoordinateFromArbiterTest")
+    @Test
     public void winningConditionNotOccursTest() {
         // Given
         Arbiter arbiter = new Arbiter();
         arbiter.addCoordinates(coordinates);
 
+        // When
+        arbiter.isHit(new Coordinate(D, 1));
+
         // Then
         assertFalse(arbiter.checkWinningCondition());
     }
 
-    @Test(dependsOnMethods = "removeCoordinateFromArbiterTest")
+    @DataProvider
+    Object[][] playerHitsProvider() {
+        return new Object[][]{{true, new Coordinate(A, 1)},
+                {false, new Coordinate(D, 1)}};
+    }
+
+    @Test(dependsOnMethods = "addCoordinatesTest", dataProvider = "playerHitsProvider")
+    public void ifPlayerHitShipTest(boolean decision, Coordinate playerHit) {
+        // Given
+        Arbiter arbiter = new Arbiter();
+        arbiter.addCoordinates(coordinates);
+
+        // When - Then
+        assertEquals(decision, arbiter.isHit(playerHit));
+        assertFalse(arbiter.contains(playerHit));
+    }
+
+    @Test(dependsOnMethods = "ifPlayerHitShipTest")
     public void winningConditionOccursTest() {
         // Given
         Arbiter arbiter = new Arbiter();
         arbiter.addCoordinates(coordinates);
-        arbiter.updateCoordinatesForMove(new Coordinate(A, 1));
+        arbiter.isHit(new Coordinate(A, 1));
 
         // Then
         assertTrue(arbiter.checkWinningCondition());
