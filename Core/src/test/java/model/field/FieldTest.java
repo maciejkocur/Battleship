@@ -14,9 +14,9 @@ public class FieldTest {
     @Test
     public void testEqualityOfFields() {
         // given
-        Field firstFieldA1 = new Field(new Coordinate(A, "1"));
-        Field secondFieldA1 = new Field(new Coordinate(A, "1"));
-        Field thirdFieldA1 = new Field(new Coordinate(A, "1"));
+        Field firstFieldA1 = new Field(new Coordinate(A, 1));
+        Field secondFieldA1 = new Field(new Coordinate(A, 1));
+        Field thirdFieldA1 = new Field(new Coordinate(A, 1));
 
         // when - then
         // reflexive
