@@ -16,7 +16,7 @@ public class BoardTest {
     public void testPlacePlayerMoveAndGetCoordinates() {
         // given
         Board board = new Board();
-        Coordinate coordinate = new Coordinate(A, "1");
+        Coordinate coordinate = new Coordinate(A, 1);
         Field field = new Field(coordinate, Boolean.TRUE);
 
         // when

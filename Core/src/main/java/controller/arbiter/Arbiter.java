@@ -1,4 +1,4 @@
-package model.arbiter;
+package controller.arbiter;
 
 import model.coordinate.Coordinate;
 

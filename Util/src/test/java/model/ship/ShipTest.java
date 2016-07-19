@@ -21,7 +21,7 @@ public class ShipTest {
     @Test
     public void testGetShipCoordinates() {
         // given
-        List<Coordinate> coordinates = Arrays.asList(new Coordinate(A, "1"), new Coordinate(B, "1"));
+        List<Coordinate> coordinates = Arrays.asList(new Coordinate(A, 1), new Coordinate(B, 1));
         Ship ship = new Ship(coordinates);
 
         // when - then
@@ -29,11 +29,11 @@ public class ShipTest {
     }
 
     @Test
-    public void testMoveShip(){
+    public void testMoveShip() {
         // given
-        List<Coordinate> startCoordinates = Arrays.asList(new Coordinate(A, "1"), new Coordinate(B, "1"));
+        List<Coordinate> startCoordinates = Arrays.asList(new Coordinate(A, 1), new Coordinate(B, 1));
         Ship ship = new Ship(startCoordinates);
-        List<Coordinate> endCoordinates = Arrays.asList(new Coordinate(C, "5"), new Coordinate(C, "6"));
+        List<Coordinate> endCoordinates = Arrays.asList(new Coordinate(C, 5), new Coordinate(C, 6));
 
         // when
         ship = ship.moveTo(endCoordinates);
@@ -44,11 +44,11 @@ public class ShipTest {
     }
 
     @Test
-    public void testEqualityOfShips(){
+    public void testEqualityOfShips() {
         // given
-        Ship firstShip = new Ship(Arrays.asList(new Coordinate(A, "1")));
-        Ship secondShip = new Ship(Arrays.asList(new Coordinate(A, "1")));
-        Ship thirdShip = new Ship(Arrays.asList(new Coordinate(A, "1")));
+        Ship firstShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
+        Ship secondShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
+        Ship thirdShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
 
         // when - then
         // reflexive

@@ -36,9 +36,9 @@ public class Ship {
     @Override
     public int hashCode(){
         if(hashcode==0) {
-            int result = 19;
+            hashcode = 19;
             for(Coordinate coordinate : coordinates){
-                result = 41*result + coordinate.hashCode();
+                hashcode = 41*hashcode + coordinate.hashCode();
             }
         }
         return hashcode;

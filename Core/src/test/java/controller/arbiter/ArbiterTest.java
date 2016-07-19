@@ -1,4 +1,4 @@
-package model.arbiter;
+package controller.arbiter;
 
 
 import model.coordinate.Coordinate;
@@ -20,7 +20,7 @@ public class ArbiterTest {
     @BeforeMethod
     public void listInit() {
         coordinates = new ArrayList<>();
-        coordinates.add(new Coordinate(A, "1"));
+        coordinates.add(new Coordinate(A, 1));
     }
 
     @AfterMethod
@@ -37,8 +37,8 @@ public class ArbiterTest {
         arbiter.addCoordinates(coordinates);
 
         // Then
-        assertTrue(arbiter.contains(new Coordinate(A, "1")));
-        assertFalse(arbiter.contains(new Coordinate(D, "10")));
+        assertTrue(arbiter.contains(new Coordinate(A, 1)));
+        assertFalse(arbiter.contains(new Coordinate(D, 10)));
     }
 
     @Test(dependsOnMethods = "addCoordinatesTest")
@@ -48,10 +48,10 @@ public class ArbiterTest {
         arbiter.addCoordinates(coordinates);
 
         // When
-        arbiter.updateCoordinatesForMove(new Coordinate(A, "1"));
+        arbiter.updateCoordinatesForMove(new Coordinate(A, 1));
 
         // Then
-        assertFalse(arbiter.contains(new Coordinate(A, "1")));
+        assertFalse(arbiter.contains(new Coordinate(A, 1)));
     }
 
     @Test(dependsOnMethods = "addCoordinatesTest")
@@ -62,7 +62,7 @@ public class ArbiterTest {
 
         // When
         try {
-            arbiter.updateCoordinatesForMove(new Coordinate(D, "3"));
+            arbiter.updateCoordinatesForMove(new Coordinate(D, 3));
         } catch (Exception e) {
             fail();
         }
@@ -83,7 +83,7 @@ public class ArbiterTest {
         // Given
         Arbiter arbiter = new Arbiter();
         arbiter.addCoordinates(coordinates);
-        arbiter.updateCoordinatesForMove(new Coordinate(A, "1"));
+        arbiter.updateCoordinatesForMove(new Coordinate(A, 1));
 
         // Then
         assertTrue(arbiter.checkWinningCondition());

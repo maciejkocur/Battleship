@@ -3,12 +3,20 @@ package model.coordinate;
 
 public class Coordinate implements Comparable<Coordinate> {
 
-    private String digit;
+    private Integer digit;
     private Sign sign;
 
-    public Coordinate(Sign sign, String digit) {
+    public Coordinate(Sign sign, Integer digit) {
         this.sign = sign;
         this.digit = digit;
+    }
+
+    public Sign showSign(){
+        return sign;
+    }
+
+    public Integer showDigit(){
+        return digit;
     }
 
     @Override
@@ -30,16 +38,16 @@ public class Coordinate implements Comparable<Coordinate> {
 
     @Override
     public int compareTo(Coordinate coordinate) {
-        int digitCompare = this.digit.compareTo(coordinate.digit);
-        if (digitCompare != 0) return digitCompare;
         int signCompare = this.sign.compareTo(coordinate.sign);
         if (signCompare != 0) return signCompare;
+        int digitCompare = this.digit.compareTo(coordinate.digit);
+        if (digitCompare != 0) return digitCompare;
         return 0;
     }
 
     @Override
     public String toString() {
-        return sign.toString().concat(digit);
+        return sign.toString().concat(digit.toString());
     }
 
 }
