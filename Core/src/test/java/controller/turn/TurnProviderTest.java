@@ -1,4 +1,4 @@
-package model.turnProvider;
+package controller.turn;
 
 import model.player.Player;
 import org.testng.annotations.Test;

@@ -16,7 +16,7 @@ public class BoardFieldsInitializer {
         Map<Coordinate, Field> fields = new TreeMap<>();
             for(Sign sign : Sign.values()){
                 for(int i=1; i<=10; i++) {
-                    Coordinate coordinate = new Coordinate(sign, String.valueOf(i));
+                    Coordinate coordinate = new Coordinate(sign, i);
                     fields.put(coordinate, new Field(coordinate));
                 }
             }
