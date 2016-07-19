@@ -3,9 +3,11 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,7 +22,8 @@ public class GuiController {
 
     @FXML
     private void fireAway(ActionEvent event){
-        System.out.println("Hello");
+        Node source = (Node)event.getSource();
+        System.out.println("Hello " + "This is the row : "+GridPane.getRowIndex(source)+"\nAnd column: "+ GridPane.getColumnIndex(source));
         }
 
 
