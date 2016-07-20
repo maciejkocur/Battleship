@@ -2,7 +2,7 @@ package model.ship.wrapper;
 
 import model.coordinate.Coordinate;
 import model.ship.Ship;
-import org.apache.commons.collections.ListUtils;
+import org.apache.commons.collections4.ListUtils;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;

@@ -3,7 +3,7 @@ package model.ship.wrapper;
 import model.coordinate.Coordinate;
 import model.coordinate.Sign;
 import model.ship.Ship;
-import org.apache.commons.collections.ListUtils;
+import org.apache.commons.collections4.ListUtils;
 
 import java.util.*;
 

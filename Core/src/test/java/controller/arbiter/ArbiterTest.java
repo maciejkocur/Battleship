@@ -2,6 +2,7 @@ package controller.arbiter;
 
 
 import model.coordinate.Coordinate;
+import model.player.Player;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -33,26 +34,28 @@ public class ArbiterTest {
     public void addCoordinatesTest() {
         // Given
         Arbiter arbiter = new Arbiter();
+        Player player = new Player(1);
 
         // When
-        arbiter.addCoordinates(coordinates);
+        arbiter.addCoordinates(player, coordinates);
 
         // Then
-        assertTrue(arbiter.contains(new Coordinate(A, 1)));
-        assertFalse(arbiter.contains(new Coordinate(D, 10)));
+        assertTrue(arbiter.contains(player, new Coordinate(A, 1)));
+        assertFalse(arbiter.contains(player, new Coordinate(D, 10)));
     }
 
     @Test
     public void winningConditionNotOccursTest() {
         // Given
         Arbiter arbiter = new Arbiter();
-        arbiter.addCoordinates(coordinates);
+        Player player = new Player(1);
+        arbiter.addCoordinates(player, coordinates);
 
         // When
-        arbiter.isHit(new Coordinate(D, 1));
+        arbiter.isHit(player, new Coordinate(D, 1));
 
         // Then
-        assertFalse(arbiter.checkWinningCondition());
+        assertFalse(arbiter.checkWinningConditionForPlayer(player));
     }
 
     @DataProvider
@@ -65,22 +68,24 @@ public class ArbiterTest {
     public void ifPlayerHitShipTest(boolean decision, Coordinate playerHit) {
         // Given
         Arbiter arbiter = new Arbiter();
-        arbiter.addCoordinates(coordinates);
+        Player player = new Player(1);
+        arbiter.addCoordinates(player, coordinates);
 
         // When - Then
-        assertEquals(decision, arbiter.isHit(playerHit));
-        assertFalse(arbiter.contains(playerHit));
+        assertEquals(decision, arbiter.isHit(player, playerHit));
+        assertFalse(arbiter.contains(player, playerHit));
     }
 
     @Test(dependsOnMethods = "ifPlayerHitShipTest")
     public void winningConditionOccursTest() {
         // Given
         Arbiter arbiter = new Arbiter();
-        arbiter.addCoordinates(coordinates);
-        arbiter.isHit(new Coordinate(A, 1));
+        Player player = new Player(1);
+        arbiter.addCoordinates(player, coordinates);
+        arbiter.isHit(player, new Coordinate(A, 1));
 
         // Then
-        assertTrue(arbiter.checkWinningCondition());
+        assertTrue(arbiter.checkWinningConditionForPlayer(player));
 
     }
 

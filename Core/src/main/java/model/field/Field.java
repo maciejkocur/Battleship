@@ -13,7 +13,7 @@ public class Field {
         this.coordinate = coordinate;
     }
 
-    public Field(Coordinate coordinate, Boolean isOccupied){
+    public Field(Coordinate coordinate, Boolean isOccupied) {
         this.coordinate = coordinate;
         this.isOccupied = isOccupied;
     }
@@ -38,13 +38,13 @@ public class Field {
     @Override
     public int hashCode() {
         int result = 17;
-        result = 31*result + coordinate.hashCode();
-        result = 31*result + (isOccupied ? 1 : 0);
+        result = 31 * result + coordinate.hashCode();
+        result = 31 * result + (isOccupied ? 1 : 0);
         return result;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return coordinate.toString().concat(", occupied=").concat(String.valueOf(isOccupied));
     }
 }

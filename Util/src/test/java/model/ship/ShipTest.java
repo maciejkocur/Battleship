@@ -1,7 +1,7 @@
 package model.ship;
 
 import model.coordinate.Coordinate;
-import org.apache.commons.collections.ListUtils;
+import org.apache.commons.collections4.ListUtils;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;

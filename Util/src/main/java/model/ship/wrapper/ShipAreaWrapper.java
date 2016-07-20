@@ -1,9 +1,8 @@
 package model.ship.wrapper;
 
-import com.sun.org.apache.regexp.internal.RE;
 import model.coordinate.Coordinate;
 import model.ship.Ship;
-import org.apache.commons.collections.ListUtils;
+import org.apache.commons.collections4.ListUtils;
 
 import java.util.List;
 
@@ -38,12 +37,12 @@ public class ShipAreaWrapper {
     }
 
     @Override
-    public int hashCode(){
-        if(hashCode==0) {
+    public int hashCode() {
+        if (hashCode == 0) {
             hashCode = 21;
-            hashCode = 39*hashCode + ship.hashCode();
-            for(Coordinate coordinate : coordinatesAroundShip){
-                hashCode = 39*hashCode + coordinate.hashCode();
+            hashCode = 39 * hashCode + ship.hashCode();
+            for (Coordinate coordinate : coordinatesAroundShip) {
+                hashCode = 39 * hashCode + coordinate.hashCode();
             }
         }
         return hashCode;

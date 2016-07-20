@@ -1,27 +1,30 @@
 package controller.arbiter;
 
 import model.coordinate.Coordinate;
+import model.player.Player;
+import org.apache.commons.collections4.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Arbiter {
 
-    private List<Coordinate> coordinates = new ArrayList<>();
+    private Map<Player, List<Coordinate>> playerCoordinates = new HashMap<>();
 
-    public void addCoordinates(List<Coordinate> coordinates) {
-        this.coordinates.addAll(coordinates);
+    public void addCoordinates(Player player, List<Coordinate> coordinates) {
+        if (CollectionUtils.isEmpty(playerCoordinates.get(player)))
+            playerCoordinates.put(player, new ArrayList<>());
+        Optional.ofNullable(playerCoordinates.get(player)).ifPresent(mapCoordinates -> mapCoordinates.addAll(coordinates));
     }
 
-    boolean contains(Coordinate coordinates) {
-        return this.coordinates.contains(coordinates);
+    boolean contains(Player player, Coordinate coordinate) {
+        return playerCoordinates.get(player).contains(coordinate);
     }
 
-    public boolean checkWinningCondition() {
-        return coordinates.size() == 0;
+    public boolean checkWinningConditionForPlayer(Player player) {
+        return CollectionUtils.isEmpty(playerCoordinates.get(player));
     }
 
-    public boolean isHit(Coordinate coordinate) {
-        return coordinates.remove(coordinate);
+    public boolean isHit(Player player, Coordinate coordinate) {
+        return playerCoordinates.get(player).remove(coordinate);
     }
 }
