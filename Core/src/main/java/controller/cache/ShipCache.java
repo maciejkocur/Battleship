@@ -21,11 +21,11 @@ public class ShipCache {
         cachedShips.remove(ship);
     }
 
-    public ShipAreaWrapper getCacheForShip(Ship ship) {
+    public ShipAreaWrapper getCachedAreaForShip(Ship ship) {
         return cachedShips.get(ship);
     }
 
-    public Map<Ship, ShipAreaWrapper> getCachedShipAreas() {
+    public Map<Ship, ShipAreaWrapper> getCachedShipsAreas() {
         return cachedShips;
     }
 

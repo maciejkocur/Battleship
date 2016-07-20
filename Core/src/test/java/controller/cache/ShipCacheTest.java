@@ -29,7 +29,7 @@ public class ShipCacheTest {
         shipCache.registerOrUpdate(smallShip);
 
         // - then
-        assertEquals(shipCache.getCacheForShip(smallShip), smallShipAreaWrapper);
+        assertEquals(shipCache.getCachedAreaForShip(smallShip), smallShipAreaWrapper);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class ShipCacheTest {
         shipCache.remove(smallShip);
 
         // - then
-        assertNull(shipCache.getCacheForShip(smallShip));
+        assertNull(shipCache.getCachedAreaForShip(smallShip));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class ShipCacheTest {
         shipCache.registerOrUpdate(bigShip);
 
         // then
-        assertTrue(SetUtils.isEqualSet(shipCache.getCachedShipAreas().values(), expectedShipsInCache));
+        assertTrue(SetUtils.isEqualSet(shipCache.getCachedShipsAreas().values(), expectedShipsInCache));
     }
 
 
