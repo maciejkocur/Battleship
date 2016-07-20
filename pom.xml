@@ -9,9 +9,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.version>1.0</project.version>
-        <apache.commons.version>3.0</apache.commons.version>
-        <commons.collections.version>4.0</commons.collections.version>
-        <testng.version>6.8</testng.version>
+        <apache.commons.version>3.4</apache.commons.version>
+        <commons.collections.version>4.1</commons.collections.version>
+        <testng.version>6.9.10</testng.version>
         <mockito.version>1.9.5</mockito.version>
         <log4j.version>2.6.2</log4j.version>
     </properties>
