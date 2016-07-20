@@ -14,13 +14,22 @@
     <groupId>pl.codingbad</groupId>
     <artifactId>battle-ships-gui</artifactId>
     <version>${project.version}</version>
-
+    <properties>
+        <dropwizard.version>0.9.3</dropwizard.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>pl.codingbad</groupId>
             <artifactId>battle-ships-util</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
     </dependencies>
+
+
 
 </project>

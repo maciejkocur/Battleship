@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
  */
 public class GuiController {
 
-
+    private Messenger messenger = new Messenger();
 
     @FXML
     private void fireAway(ActionEvent event){
@@ -34,7 +34,7 @@ public class GuiController {
 
         System.out.println("Hello " + "This is the row : "+GridPane.getRowIndex(source)+"\nAnd column: "+ GridPane.getColumnIndex(source));
 
-
+        messenger.sendShootCoords(GridPane.getRowIndex(source),GridPane.getColumnIndex(source));
         source.setDisable(true);
         }
 
