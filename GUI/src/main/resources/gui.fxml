@@ -6,7 +6,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GuiController">
+<?import components.Ship?>
+<Pane onMouseReleased="#stopDragging" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GuiController">
    <children>
       <ImageView pickOnBounds="true" preserveRatio="true">
          <image>
@@ -16,7 +17,7 @@
             <Rectangle2D width="42.0" />
          </viewport>
       </ImageView>
-      <Pane layoutX="100.0" layoutY="50.0">
+      <Pane id="shipBoard"  layoutX="100.0" layoutY="50.0">
          <children>
             <ImageView pickOnBounds="true" preserveRatio="true">
                <image>
@@ -52,9 +53,7 @@
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-
               </rowConstraints>
-
             </GridPane>
          </children>
       </Pane>
@@ -208,6 +207,7 @@
                   <Image url="@assets/ShipContainer.png" />
                </image>
             </ImageView>
+            <Ship onMousePressed="#grabbing" onMouseDragged="#dragging"  />
          </children>
       </Pane>
    </children>
