@@ -19,16 +19,6 @@ import static org.testng.Assert.assertTrue;
 public class ShipAreaWrapperTest {
 
     @Test
-    public void testGetShip() {
-        // given
-        Ship smallShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
-        ShipAreaWrapper smallShipAreaWrapper = new ShipAreaWrapper(smallShip);
-
-        // when - then
-        assertEquals(smallShipAreaWrapper.getShip(), smallShip);
-    }
-
-    @Test
     public void testGetCoordinatesAroundShip() {
         // given
         Ship smallShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
