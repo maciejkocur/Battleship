@@ -1,7 +1,8 @@
-package model.ship.wrapper;
+package model.ship.wrapper.impl;
 
 import model.coordinate.Coordinate;
-import model.ship.Ship;
+import model.ship.GameShip;
+import model.ship.wrapper.GameShipAreaWrapper;
 import org.apache.commons.collections4.ListUtils;
 
 import java.util.List;
@@ -9,14 +10,15 @@ import java.util.List;
 /**
  * Created by lucz on 18.07.16.
  */
-public class ShipAreaWrapper {
+public class ShipAreaWrapper implements GameShipAreaWrapper {
     private volatile int hashCode = 0;
     private List<Coordinate> coordinatesAroundShip;
 
-    public ShipAreaWrapper(Ship ship) {
+    public ShipAreaWrapper(GameShip ship) {
         coordinatesAroundShip = ShipAreaResolver.findCoordinatesAroundShip(ship);
     }
 
+    @Override
     public List<Coordinate> getCoordinatesAroundShip() {
         return coordinatesAroundShip;
     }

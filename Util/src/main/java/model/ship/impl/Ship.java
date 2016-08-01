@@ -1,6 +1,7 @@
-package model.ship;
+package model.ship.impl;
 
 import model.coordinate.Coordinate;
+import model.ship.GameShip;
 import org.apache.commons.collections4.ListUtils;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * Created by lucz on 18.07.16.
  */
-public class Ship {
+public class Ship implements GameShip {
 
     private volatile int hashcode = 0;
     private List<Coordinate> coordinates;
@@ -17,10 +18,12 @@ public class Ship {
         this.coordinates = coordinates;
     }
 
+    @Override
     public List<Coordinate> getCoordinates() {
         return coordinates;
     }
 
+    @Override
     public Ship moveTo(List<Coordinate> newCoordinates) {
         return new Ship(newCoordinates);
     }

@@ -1,12 +1,13 @@
-package controller.turn;
+package controller.turn.impl;
 
+import controller.turn.GameTurnProvider;
 import model.player.Player;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Queue;
 
-public class TurnProvider {
+public class TurnProvider implements GameTurnProvider {
 
     private Queue<Player> turnQueue;
 
@@ -20,11 +21,12 @@ public class TurnProvider {
         return new TurnProvider(turnQueue);
     }
 
-
+    @Override
     public Player getCurrentPlayer() {
         return turnQueue.peek();
     }
 
+    @Override
     public Player getNextPlayer() {
         Player currentPlayer = turnQueue.poll();
         turnQueue.add(currentPlayer);

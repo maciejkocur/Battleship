@@ -2,22 +2,25 @@ package controller.arbiter;
 
 import model.coordinate.Coordinate;
 import model.player.Player;
-import model.ship.Ship;
+import model.ship.GameShip;
 import org.apache.commons.collections4.CollectionUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ArbiterDecisionEngine {
 
     private Map<Player, List<Coordinate>> playerCoordinates = new HashMap<>();
 
-    public void addCoordinatesFromShip(Player player, Ship ship) {
+    public void addCoordinatesFromShip(Player player, GameShip ship) {
         if (CollectionUtils.isEmpty(playerCoordinates.get(player)))
             playerCoordinates.put(player, new ArrayList<>());
-        Optional.ofNullable(playerCoordinates.get(player)).ifPresent(mapCoordinates -> mapCoordinates.addAll(ship.getCoordinates()));
+        playerCoordinates.get(player).addAll(ship.getCoordinates());
     }
 
-    boolean contains(Player player, Coordinate coordinate) {
+    public boolean contains(Player player, Coordinate coordinate) {
         return playerCoordinates.get(player).contains(coordinate);
     }
 

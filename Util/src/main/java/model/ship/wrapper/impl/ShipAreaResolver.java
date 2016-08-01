@@ -1,8 +1,8 @@
-package model.ship.wrapper;
+package model.ship.wrapper.impl;
 
 import model.coordinate.Coordinate;
 import model.coordinate.Sign;
-import model.ship.Ship;
+import model.ship.GameShip;
 import org.apache.commons.collections4.ListUtils;
 
 import java.util.*;
@@ -15,7 +15,7 @@ import static model.coordinate.Sign.J;
  */
 public class ShipAreaResolver {
 
-    public static List<Coordinate> findCoordinatesAroundShip(Ship ship) {
+    public static List<Coordinate> findCoordinatesAroundShip(GameShip ship) {
         Set<Coordinate> allCoordinates = new HashSet<>();
         for (Coordinate shipCoordinate : ship.getCoordinates()) {
             allCoordinates.addAll(findCoordinatesRow(shipCoordinate.showSign(), shipCoordinate.showDigit()));
@@ -31,16 +31,16 @@ public class ShipAreaResolver {
         return coordinatesAroundShip;
     }
 
-    private static List<Coordinate> findCoordinatesRow(Sign previousSign, Integer digit) {
+    private static List<Coordinate> findCoordinatesRow(Sign sign, Integer digit) {
         List<Coordinate> coordinatesInRow = new ArrayList<>();
         // left
         if (digit - 1 > 0)
-            coordinatesInRow.add(new Coordinate(previousSign, digit - 1));
+            coordinatesInRow.add(new Coordinate(sign, digit - 1));
         // current
-        coordinatesInRow.add(new Coordinate(previousSign, digit));
+        coordinatesInRow.add(new Coordinate(sign, digit));
         // right
         if (digit + 1 < 10)
-            coordinatesInRow.add(new Coordinate(previousSign, digit + 1));
+            coordinatesInRow.add(new Coordinate(sign, digit + 1));
         return coordinatesInRow;
     }
 

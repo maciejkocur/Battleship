@@ -1,23 +1,23 @@
-package controller.arbiter;
+package controller.arbiter.impl;
 
-import controller.cache.ShipCache;
+import controller.arbiter.ArbiterDecisionEngine;
+import controller.arbiter.GameArbiter;
 import model.coordinate.Coordinate;
 import model.player.Player;
-import model.ship.Ship;
+import model.ship.GameShip;
 
 /**
  * Created by lucz on 22.07.16.
  */
-public class Arbiter {
+public class Arbiter implements GameArbiter {
     private ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
-    private ShipCache shipCache = new ShipCache();
 
-
-    public void registerShipForPlayer(Player player, Ship ship) {
+    @Override
+    public void registerShipForPlayer(Player player, GameShip ship) {
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
-        shipCache.registerOrUpdate(ship);
     }
 
+    @Override
     public boolean isHit(Player player, Coordinate hitCoordinate) {
         return arbiterDecisionEngine.isHit(player, hitCoordinate);
     }

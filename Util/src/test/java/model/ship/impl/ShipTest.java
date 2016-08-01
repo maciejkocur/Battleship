@@ -1,6 +1,8 @@
-package model.ship;
+package model.ship.impl;
 
 import model.coordinate.Coordinate;
+import model.ship.GameShip;
+import model.ship.impl.Ship;
 import org.apache.commons.collections4.ListUtils;
 import org.testng.annotations.Test;
 
@@ -22,7 +24,7 @@ public class ShipTest {
     public void testGetShipCoordinates() {
         // given
         List<Coordinate> coordinates = Arrays.asList(new Coordinate(A, 1), new Coordinate(B, 1));
-        Ship ship = new Ship(coordinates);
+        GameShip ship = new Ship(coordinates);
 
         // when - then
         assertTrue(ListUtils.isEqualList(ship.getCoordinates(), coordinates));
@@ -32,7 +34,7 @@ public class ShipTest {
     public void testMoveShip() {
         // given
         List<Coordinate> startCoordinates = Arrays.asList(new Coordinate(A, 1), new Coordinate(B, 1));
-        Ship ship = new Ship(startCoordinates);
+        GameShip ship = new Ship(startCoordinates);
         List<Coordinate> endCoordinates = Arrays.asList(new Coordinate(C, 5), new Coordinate(C, 6));
 
         // when
@@ -46,9 +48,9 @@ public class ShipTest {
     @Test
     public void testEqualityOfShips() {
         // given
-        Ship firstShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
-        Ship secondShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
-        Ship thirdShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
+        GameShip firstShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
+        GameShip secondShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
+        GameShip thirdShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
 
         // when - then
         // reflexive

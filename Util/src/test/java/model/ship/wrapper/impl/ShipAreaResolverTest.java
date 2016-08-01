@@ -1,7 +1,8 @@
-package model.ship.wrapper;
+package model.ship.wrapper.impl;
 
 import model.coordinate.Coordinate;
-import model.ship.Ship;
+import model.ship.impl.Ship;
+import model.ship.wrapper.impl.ShipAreaResolver;
 import org.apache.commons.collections4.ListUtils;
 import org.testng.annotations.Test;
 

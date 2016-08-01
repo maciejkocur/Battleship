@@ -1,5 +1,6 @@
 package controller.turn;
 
+import controller.turn.impl.TurnProvider;
 import model.player.Player;
 import org.testng.annotations.Test;
 

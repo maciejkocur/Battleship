@@ -1,9 +1,12 @@
-package controller.arbiter;
+package controller.arbiter.impl;
 
+import controller.arbiter.GameArbiter;
 import model.coordinate.Coordinate;
 import model.player.Player;
-import model.ship.Ship;
-import org.testng.annotations.*;
+import model.ship.impl.Ship;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.util.Arrays;
 
@@ -16,7 +19,7 @@ import static org.testng.Assert.assertTrue;
  */
 public class ArbiterTest {
 
-    Arbiter arbiter;
+    GameArbiter arbiter;
 
     @BeforeTest
     public void registerShipsForPlayers() {
@@ -27,7 +30,7 @@ public class ArbiterTest {
     }
 
     @AfterTest
-    public void cleanUp(){
+    public void cleanUp() {
         arbiter = null;
     }
 
