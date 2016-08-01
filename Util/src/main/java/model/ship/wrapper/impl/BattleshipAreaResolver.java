@@ -2,7 +2,7 @@ package model.ship.wrapper.impl;
 
 import model.coordinate.Coordinate;
 import model.coordinate.Sign;
-import model.ship.GameShip;
+import model.ship.Ship;
 import org.apache.commons.collections4.ListUtils;
 
 import java.util.*;
@@ -13,9 +13,9 @@ import static model.coordinate.Sign.J;
 /**
  * Created by lucz on 18.07.16.
  */
-public class ShipAreaResolver {
+public class BattleshipAreaResolver {
 
-    public static List<Coordinate> findCoordinatesAroundShip(GameShip ship) {
+    public static List<Coordinate> findCoordinatesAroundShip(Ship ship) {
         Set<Coordinate> allCoordinates = new HashSet<>();
         for (Coordinate shipCoordinate : ship.getCoordinates()) {
             allCoordinates.addAll(findCoordinatesRow(shipCoordinate.showSign(), shipCoordinate.showDigit()));

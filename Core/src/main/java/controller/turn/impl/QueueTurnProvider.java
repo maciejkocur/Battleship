@@ -1,24 +1,24 @@
 package controller.turn.impl;
 
-import controller.turn.GameTurnProvider;
+import controller.turn.TurnProvider;
 import model.player.Player;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Queue;
 
-public class TurnProvider implements GameTurnProvider {
+public class QueueTurnProvider implements TurnProvider {
 
     private Queue<Player> turnQueue;
 
-    private TurnProvider(Queue<Player> turnQueue) {
+    private QueueTurnProvider(Queue<Player> turnQueue) {
         this.turnQueue = turnQueue;
     }
 
-    public static TurnProvider getTurnProvider(Player player1, Player player2) {
+    public static QueueTurnProvider getTurnProvider(Player player1, Player player2) {
         Queue<Player> turnQueue = new ArrayDeque<>();
         turnQueue.addAll(Arrays.asList(player1, player2));
-        return new TurnProvider(turnQueue);
+        return new QueueTurnProvider(turnQueue);
     }
 
     @Override

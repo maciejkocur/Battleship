@@ -1,9 +1,10 @@
 package controller.arbiter;
 
+import controller.arbiter.impl.ArbiterDecisionEngine;
 import model.coordinate.Coordinate;
 import model.player.Player;
-import model.ship.GameShip;
-import model.ship.impl.Ship;
+import model.ship.Ship;
+import model.ship.impl.Battleship;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -19,11 +20,11 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class ArbiterDecisionEngineTest {
 
-    private GameShip ship;
+    private Ship ship;
 
     @BeforeMethod
     public void shipInit() {
-        ship = new Ship(Arrays.asList(new Coordinate(A, 1)));
+        ship = new Battleship(Arrays.asList(new Coordinate(A, 1)));
     }
 
     @AfterMethod

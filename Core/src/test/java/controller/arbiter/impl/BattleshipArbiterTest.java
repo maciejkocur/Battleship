@@ -1,9 +1,9 @@
 package controller.arbiter.impl;
 
-import controller.arbiter.GameArbiter;
+import controller.arbiter.Arbiter;
 import model.coordinate.Coordinate;
 import model.player.Player;
-import model.ship.impl.Ship;
+import model.ship.impl.Battleship;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -17,16 +17,16 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created by lucz on 22.07.16.
  */
-public class ArbiterTest {
+public class BattleshipArbiterTest {
 
-    GameArbiter arbiter;
+    Arbiter arbiter;
 
     @BeforeTest
     public void registerShipsForPlayers() {
-        this.arbiter = new Arbiter();
-        arbiter.registerShipForPlayer(new Player(1), new Ship(Arrays.asList(new Coordinate(A, 1))));
-        arbiter.registerShipForPlayer(new Player(1), new Ship(Arrays.asList(new Coordinate(A, 3), new Coordinate(B, 3))));
-        arbiter.registerShipForPlayer(new Player(2), new Ship(Arrays.asList(new Coordinate(H, 7), new Coordinate(I, 7), new Coordinate(J, 7))));
+        this.arbiter = new BattleshipArbiter();
+        arbiter.registerShipForPlayer(new Player(1), new Battleship(Arrays.asList(new Coordinate(A, 1))));
+        arbiter.registerShipForPlayer(new Player(1), new Battleship(Arrays.asList(new Coordinate(A, 3), new Coordinate(B, 3))));
+        arbiter.registerShipForPlayer(new Player(2), new Battleship(Arrays.asList(new Coordinate(H, 7), new Coordinate(I, 7), new Coordinate(J, 7))));
     }
 
     @AfterTest

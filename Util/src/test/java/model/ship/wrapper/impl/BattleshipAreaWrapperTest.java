@@ -1,9 +1,8 @@
 package model.ship.wrapper.impl;
 
 import model.coordinate.Coordinate;
-import model.ship.impl.Ship;
-import model.ship.wrapper.GameShipAreaWrapper;
-import model.ship.wrapper.impl.ShipAreaWrapper;
+import model.ship.impl.Battleship;
+import model.ship.wrapper.ShipAreaWrapper;
 import org.apache.commons.collections4.ListUtils;
 import org.testng.annotations.Test;
 
@@ -18,13 +17,13 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created by lucz on 18.07.16.
  */
-public class ShipAreaWrapperTest {
+public class BattleshipAreaWrapperTest {
 
     @Test
     public void testGetCoordinatesAroundShip() {
         // given
-        Ship smallShip = new Ship(Arrays.asList(new Coordinate(A, 1)));
-        GameShipAreaWrapper smallShipAreaWrapper = new ShipAreaWrapper(smallShip);
+        Battleship smallShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
+        ShipAreaWrapper smallShipAreaWrapper = new BattleshipAreaWrapper(smallShip);
         List<Coordinate> coordinatesAroundShip = Arrays.asList(new Coordinate(A, 2), new Coordinate(B, 1), new Coordinate(B, 2));
 
         // when - then

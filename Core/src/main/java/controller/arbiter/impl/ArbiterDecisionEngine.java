@@ -1,8 +1,8 @@
-package controller.arbiter;
+package controller.arbiter.impl;
 
 import model.coordinate.Coordinate;
 import model.player.Player;
-import model.ship.GameShip;
+import model.ship.Ship;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class ArbiterDecisionEngine {
 
     private Map<Player, List<Coordinate>> playerCoordinates = new HashMap<>();
 
-    public void addCoordinatesFromShip(Player player, GameShip ship) {
+    public void addCoordinatesFromShip(Player player, Ship ship) {
         if (CollectionUtils.isEmpty(playerCoordinates.get(player)))
             playerCoordinates.put(player, new ArrayList<>());
         playerCoordinates.get(player).addAll(ship.getCoordinates());

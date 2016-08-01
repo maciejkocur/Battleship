@@ -1,19 +1,18 @@
 package controller.arbiter.impl;
 
-import controller.arbiter.ArbiterDecisionEngine;
-import controller.arbiter.GameArbiter;
+import controller.arbiter.Arbiter;
 import model.coordinate.Coordinate;
 import model.player.Player;
-import model.ship.GameShip;
+import model.ship.Ship;
 
 /**
  * Created by lucz on 22.07.16.
  */
-public class Arbiter implements GameArbiter {
+public class BattleshipArbiter implements Arbiter {
     private ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
 
     @Override
-    public void registerShipForPlayer(Player player, GameShip ship) {
+    public void registerShipForPlayer(Player player, Ship ship) {
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
     }
 

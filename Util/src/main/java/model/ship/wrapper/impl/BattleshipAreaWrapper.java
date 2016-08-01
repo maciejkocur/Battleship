@@ -1,8 +1,8 @@
 package model.ship.wrapper.impl;
 
 import model.coordinate.Coordinate;
-import model.ship.GameShip;
-import model.ship.wrapper.GameShipAreaWrapper;
+import model.ship.Ship;
+import model.ship.wrapper.ShipAreaWrapper;
 import org.apache.commons.collections4.ListUtils;
 
 import java.util.List;
@@ -10,12 +10,12 @@ import java.util.List;
 /**
  * Created by lucz on 18.07.16.
  */
-public class ShipAreaWrapper implements GameShipAreaWrapper {
+public class BattleshipAreaWrapper implements ShipAreaWrapper {
     private volatile int hashCode = 0;
     private List<Coordinate> coordinatesAroundShip;
 
-    public ShipAreaWrapper(GameShip ship) {
-        coordinatesAroundShip = ShipAreaResolver.findCoordinatesAroundShip(ship);
+    public BattleshipAreaWrapper(Ship ship) {
+        coordinatesAroundShip = BattleshipAreaResolver.findCoordinatesAroundShip(ship);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class ShipAreaWrapper implements GameShipAreaWrapper {
         if (this == object) return true;
         if (object == null) return false;
         if (getClass() != object.getClass()) return false;
-        ShipAreaWrapper other = (ShipAreaWrapper) object;
+        BattleshipAreaWrapper other = (BattleshipAreaWrapper) object;
         return ListUtils.isEqualList(coordinatesAroundShip, other.coordinatesAroundShip);
     }
 
