@@ -4,10 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
 import controller.Message;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 
@@ -30,7 +27,7 @@ public class MessageResource {
         this.y=y;
     }
 
-    @GET
+    @POST
     @Timed
     public Message sendMessage(int playerID,int gameID,
                                int x,int y){
