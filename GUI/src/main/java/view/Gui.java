@@ -6,15 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Player;
 
 /**
  * Created by DELL on 2016-07-18.
  */
 public class Gui extends Application{
 
+    private Player player;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        player = new Player();
+        player.generateID();
         try{Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("gui.fxml"));
         CoordinatesSender coordinatesSender = new CoordinatesSender();
             coordinatesSender.run();
@@ -22,7 +27,9 @@ public class Gui extends Application{
         primaryStage.setResizable(false);
         primaryStage.setTitle("Battleship");
         primaryStage.setScene(scene);
-        primaryStage.show();}
+        primaryStage.show();
+        }
+
         catch(Exception e){}
     }
 

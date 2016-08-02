@@ -3,6 +3,7 @@ package resources;
 import com.codahale.metrics.annotation.Timed;
 
 import controller.Coordinates;
+import model.Player;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
