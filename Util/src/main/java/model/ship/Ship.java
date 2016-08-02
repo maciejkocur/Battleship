@@ -13,6 +13,7 @@ public class Ship {
     private volatile int hashcode = 0;
     private List<Coordinate> coordinates;
 
+
     public Ship(List<Coordinate> coordinates) {
         this.coordinates = coordinates;
     }

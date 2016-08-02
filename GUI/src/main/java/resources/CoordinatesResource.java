@@ -1,26 +1,26 @@
 package resources;
 
 import com.codahale.metrics.annotation.Timed;
-import com.google.common.base.Optional;
-import controller.Message;
+
+import controller.Coordinates;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
+
 
 /**
  * Created by bartlomiej on 20.07.16.
  */
-@Path("/coordinate")
+@Path("/coordinates")
 @Produces(MediaType.APPLICATION_JSON)
-public class MessageResource {
+public class CoordinatesResource {
 
     private final int playerID;
     private final int gameID;
     private final int x;
     private final int y;
 
-    public MessageResource(int playerID,int gameID,int x,int y){
+    public CoordinatesResource(int playerID, int gameID, int x, int y){
         this.playerID=playerID;
         this.gameID=gameID;
         this.x=x;
@@ -29,9 +29,9 @@ public class MessageResource {
 
     @POST
     @Timed
-    public Message sendMessage(int playerID,int gameID,
-                               int x,int y){
-        return new Message(playerID,gameID,x,y);
+    public Coordinates sendMessage(int playerID, int gameID,
+                                   int x, int y){
+        return new Coordinates(playerID,gameID,x,y);
     }
 
 }

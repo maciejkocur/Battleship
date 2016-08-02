@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * Created by bartlomiej on 20.07.16.
  */
-public class GuiConfiguration extends Configuration {
+public class CoordinatesConfiguration extends Configuration {
     @NotEmpty
     private int x;
 

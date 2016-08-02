@@ -1,11 +1,12 @@
 package controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import model.ship.Ship;
 
 /**
  * Created by bartlomiej on 20.07.16.
  */
-public class Message {
+public class Coordinates {
 
     private int playerID;
 
@@ -16,9 +17,9 @@ public class Message {
     private int x;
     private int y;
 
-    public Message(){}
+    public Coordinates(){}
 
-    public Message(int playerID,int gameID,int x,int y){
+    public Coordinates(int playerID, int gameID, int x, int y){
 
     }
 
