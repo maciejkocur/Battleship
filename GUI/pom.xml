@@ -23,7 +23,11 @@
               <artifactId>battle-ships-util</artifactId>
               <version>${project.version}</version>
           </dependency>
-
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-web</artifactId>
+           <version>1.4.0.RELEASE</version>
+       </dependency>
       </dependencies>
 
     <build>
