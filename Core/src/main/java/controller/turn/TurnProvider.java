@@ -1,11 +1,14 @@
 package controller.turn;
 
-import model.player.Player;
+import model.client.Client;
 
 /**
  * Created by lucz on 01.08.16.
  */
 public interface TurnProvider {
-    Player getCurrentPlayer();
-    Player getNextPlayer();
+    Client getCurrentPlayer();
+
+    Client getNextPlayer();
+
+    void changeTurn();
 }

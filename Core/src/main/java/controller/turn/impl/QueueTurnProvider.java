@@ -1,36 +1,40 @@
 package controller.turn.impl;
 
 import controller.turn.TurnProvider;
-import model.player.Player;
+import model.client.Client;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Queue;
+import java.util.Deque;
 
 public class QueueTurnProvider implements TurnProvider {
 
-    private Queue<Player> turnQueue;
+    private Deque<Client> turnQueue;
 
-    private QueueTurnProvider(Queue<Player> turnQueue) {
+    private QueueTurnProvider(Deque<Client> turnQueue) {
         this.turnQueue = turnQueue;
     }
 
-    public static QueueTurnProvider getTurnProvider(Player player1, Player player2) {
-        Queue<Player> turnQueue = new ArrayDeque<>();
-        turnQueue.addAll(Arrays.asList(player1, player2));
+    public static QueueTurnProvider of(Client... clients) {
+        Deque<Client> turnQueue = new ArrayDeque<>();
+        turnQueue.addAll(Arrays.asList(clients));
         return new QueueTurnProvider(turnQueue);
     }
 
     @Override
-    public Player getCurrentPlayer() {
-        return turnQueue.peek();
+    public Client getCurrentPlayer() {
+        return turnQueue.peekFirst();
     }
 
     @Override
-    public Player getNextPlayer() {
-        Player currentPlayer = turnQueue.poll();
+    public Client getNextPlayer() {
+        return turnQueue.peekLast();
+    }
+
+    @Override
+    public void changeTurn(){
+        Client currentPlayer = turnQueue.poll();
         turnQueue.add(currentPlayer);
-        return turnQueue.peek();
     }
 
 }

@@ -1,8 +1,7 @@
-package controller.arbiter;
+package controller.arbiter.util;
 
-import controller.arbiter.impl.ArbiterDecisionEngine;
 import model.coordinate.Coordinate;
-import model.player.Player;
+import model.client.Client;
 import model.ship.Ship;
 import model.ship.impl.Battleship;
 import org.testng.annotations.AfterMethod;
@@ -11,6 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 import static model.coordinate.Sign.A;
 import static model.coordinate.Sign.D;
@@ -36,7 +36,7 @@ public class ArbiterDecisionEngineTest {
     public void addCoordinatesTest() {
         // Given
         ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
-        Player player = new Player(1);
+        Client player = new Client(UUID.randomUUID());
 
         // When
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
@@ -50,14 +50,14 @@ public class ArbiterDecisionEngineTest {
     public void winningConditionNotOccursTest() {
         // Given
         ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
-        Player player = new Player(1);
+        Client player = new Client(UUID.randomUUID());
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
 
         // When
         arbiterDecisionEngine.isHit(player, new Coordinate(D, 1));
 
         // Then
-        assertFalse(arbiterDecisionEngine.checkWinningConditionForPlayer(player));
+        assertFalse(arbiterDecisionEngine.checkWinningConditionForClient(player));
     }
 
     @DataProvider
@@ -70,7 +70,7 @@ public class ArbiterDecisionEngineTest {
     public void ifPlayerHitShipTest(boolean decision, Coordinate playerHit) {
         // Given
         ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
-        Player player = new Player(1);
+        Client player = new Client(UUID.randomUUID());
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
 
         // When - Then
@@ -82,12 +82,12 @@ public class ArbiterDecisionEngineTest {
     public void winningConditionOccursTest() {
         // Given
         ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
-        Player player = new Player(1);
+        Client player = new Client(UUID.randomUUID());
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
         arbiterDecisionEngine.isHit(player, new Coordinate(A, 1));
 
         // Then
-        assertTrue(arbiterDecisionEngine.checkWinningConditionForPlayer(player));
+        assertTrue(arbiterDecisionEngine.checkWinningConditionForClient(player));
 
     }
 

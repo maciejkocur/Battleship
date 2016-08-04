@@ -1,4 +1,4 @@
-package model.ship.wrapper.impl;
+package model.ship.wrapper.util;
 
 import model.coordinate.Coordinate;
 import model.coordinate.Sign;

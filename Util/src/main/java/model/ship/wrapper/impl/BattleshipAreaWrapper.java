@@ -3,6 +3,7 @@ package model.ship.wrapper.impl;
 import model.coordinate.Coordinate;
 import model.ship.Ship;
 import model.ship.wrapper.ShipAreaWrapper;
+import model.ship.wrapper.util.BattleshipAreaResolver;
 import org.apache.commons.collections4.ListUtils;
 
 import java.util.List;

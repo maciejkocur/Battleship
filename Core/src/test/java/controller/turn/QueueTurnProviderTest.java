@@ -1,8 +1,10 @@
 package controller.turn;
 
 import controller.turn.impl.QueueTurnProvider;
-import model.player.Player;
+import model.client.Client;
 import org.testng.annotations.Test;
+
+import java.util.UUID;
 
 import static org.testng.Assert.assertEquals;
 
@@ -10,27 +12,33 @@ import static org.testng.Assert.assertEquals;
 public class QueueTurnProviderTest {
 
     @Test
-    public void getCurrentPlayerTest() {
+    public void testGetCurrentPlayer() {
         // Given
-        Player player1 = new Player(1);
-        Player player2 = new Player(2);
-        TurnProvider queueTurnProvider = QueueTurnProvider.getTurnProvider(player1, player2);
+        Client firstClient = new Client(UUID.randomUUID());
+        Client secondClient = new Client(UUID.randomUUID());
+        TurnProvider queueTurnProvider = QueueTurnProvider.of(firstClient, secondClient);
 
         // When - Then
-        assertEquals(queueTurnProvider.getCurrentPlayer(), player1);
+        assertEquals(queueTurnProvider.getCurrentPlayer(), firstClient);
     }
 
     @Test
-    public void sequenceOfTurnsTest() {
+    public void testSequenceOfThreeTurns() {
         // Given
-        Player player1 = new Player(1);
-        Player player2 = new Player(2);
-        TurnProvider queueTurnProvider = QueueTurnProvider.getTurnProvider(player1, player2);
+        Client firstClient = new Client(UUID.randomUUID());
+        Client secondClient = new Client(UUID.randomUUID());
+        TurnProvider queueTurnProvider = QueueTurnProvider.of(firstClient, secondClient);
 
         // When - Then
-        assertEquals(player1, queueTurnProvider.getCurrentPlayer());
-        assertEquals(player2, queueTurnProvider.getNextPlayer());
-        assertEquals(player1, queueTurnProvider.getNextPlayer());
+        assertEquals(firstClient, queueTurnProvider.getCurrentPlayer());
+        assertEquals(secondClient, queueTurnProvider.getNextPlayer());
+        queueTurnProvider.changeTurn();
+        assertEquals(secondClient, queueTurnProvider.getCurrentPlayer());
+        assertEquals(firstClient, queueTurnProvider.getNextPlayer());
+        queueTurnProvider.changeTurn();
+        assertEquals(firstClient, queueTurnProvider.getCurrentPlayer());
+        assertEquals(secondClient, queueTurnProvider.getNextPlayer());
+        queueTurnProvider.changeTurn();
     }
 
 }
