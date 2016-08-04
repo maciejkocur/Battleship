@@ -1,6 +1,7 @@
 package controller;
 
 import model.Coordinates;
+import model.Player;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -34,5 +35,9 @@ public class Sender {
         //rest.postForObject(uri, ship, Ship.class);
     }
 
-    
+    public static void sendPlayer(){
+        final String uri = "url";
+        RestTemplate rest = new RestTemplate();
+        rest.postForObject(uri, Player.getPlayer(),Player.class);
+    }
 }
