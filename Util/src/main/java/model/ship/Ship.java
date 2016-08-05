@@ -1,7 +1,6 @@
 package model.ship;
 
 import model.coordinate.Coordinate;
-import org.apache.commons.collections.ListUtils;
 
 import java.util.List;
 
@@ -9,41 +8,9 @@ import java.util.List;
  * Created by lucz on 01.08.16.
  */
 
-public class Ship {
+public interface Ship {
 
-    private volatile int hashcode = 0;
-    private List<Coordinate> coordinates;
-
-
-    public Ship(List<Coordinate> coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public List<Coordinate> getCoordinates() {
-        return coordinates;
-    }
-
-    public Ship moveTo(List<Coordinate> newCoordinates) {
-        return new Ship(newCoordinates);
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        Ship other = (Ship) object;
-        return ListUtils.isEqualList(coordinates, other.coordinates);
-    }
-
-    @Override
-    public int hashCode() {
-        if (hashcode == 0) {
-            int result = 19;
-            for (Coordinate coordinate : coordinates) {
-                result = 41 * result + coordinate.hashCode();
-            }
-        }
-        return hashcode;
-    }
+    List<Coordinate> getCoordinates();
+    Ship moveTo(List<Coordinate> newCoordinates);
 
 }

@@ -1,15 +1,17 @@
 package controller;
 
+import components.ClientFactory;
 import components.Ship;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import model.Coordinates;
+import model.client.Client;
 
 /**
  * Created by bartlomiej on 19.07.16.
@@ -21,6 +23,8 @@ public class GuiController {
     public GridPane userBoard;
     @FXML
     public AnchorPane rootPane;
+    @FXML
+    public Pane cover;
 
     private Ship invship;
     private Ship movableShip;
@@ -28,12 +32,21 @@ public class GuiController {
     private EventHandler<DragEvent> shipDragOverRoot;
     private EventHandler<DragEvent> shipDragDropped;
     private EventHandler<DragEvent> shipDragOverUserBoard;
+    private Coordinates coordinates;
+    private Client client;
 
     @FXML
     private void fireAway(ActionEvent event) {
         Node source = (Node) event.getSource();
+        client = ClientFactory.getClient();
         source.setOpacity(1.0);
+        coordinates = Coordinates.getCoordinates();
+
         System.out.println("Hello " + "This is the row : " + GridPane.getRowIndex(source) + "\nAnd column: " + GridPane.getColumnIndex(source));
+        coordinates.setPlayerId(client.toString());
+        coordinates.setX(GridPane.getRowIndex(source));
+        coordinates.setY(GridPane.getRowIndex(source));
+
         source.setDisable(true);
     }
 
@@ -49,11 +62,11 @@ public class GuiController {
                 Pane label = new Pane();
                 label.setOnDragDropped(event -> {
                     event.acceptTransferModes(TransferMode.ANY);
-                    System.out.println(GridPane.getRowIndex(label) + " " +GridPane.getColumnIndex(label));
+                    System.out.println(GridPane.getRowIndex(label) + " " + GridPane.getColumnIndex(label));
                 });
                 userBoard.getChildren().add(label);
-                GridPane.setColumnIndex(label,i);
-                GridPane.setRowIndex(label,j);
+                GridPane.setColumnIndex(label, i);
+                GridPane.setRowIndex(label, j);
             }
 
         }

@@ -1,7 +1,9 @@
 package controller.communication;
 
+import components.ClientFactory;
+import components.Ship;
 import model.Coordinates;
-import model.Player;
+import model.client.Client;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -27,17 +29,17 @@ public class Sender {
         rest.postForObject(uri, coordinates, ArrayList.class);
     }
 
-    private static void sendShip() {
+    private static void sendShip(Ship ship) {
         final String uri = "url+ship";
 
         RestTemplate rest = new RestTemplate();
 
-        //rest.postForObject(uri, ship, Ship.class);
+        rest.postForObject(uri, ship, Ship.class);
     }
 
     public static void sendPlayer() {
         final String uri = "url";
         RestTemplate rest = new RestTemplate();
-        rest.postForObject(uri, Player.getPlayer(), Player.class);
+        rest.postForObject(uri, ClientFactory.getClient(), Client.class);
     }
 }

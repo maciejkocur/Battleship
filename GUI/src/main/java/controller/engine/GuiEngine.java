@@ -1,9 +1,9 @@
 package controller.engine;
 
+import components.ClientFactory;
 import controller.TurnController;
 import controller.communication.Receiver;
 import controller.communication.Sender;
-import model.Player;
 
 /**
  * Created by bartlomiej on 04.08.16.
@@ -17,7 +17,7 @@ public class GuiEngine {
         Sender.sendPlayer();
         if (Receiver.isInitialized()) {
             while (!Receiver.isWon()) {
-                if (Receiver.whoseTurn() == Player.getPlayer())
+                if (Receiver.whoseTurn() == ClientFactory.getClient())
                     turnController.yourTurn();
                 else turnController.opponentsTurn();
             }

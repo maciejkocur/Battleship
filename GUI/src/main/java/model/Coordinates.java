@@ -8,12 +8,14 @@ import java.util.List;
 // This is a resource for coordinates
 public class Coordinates {
 
-    private int x,y,gameId,playerId;
+    private static Coordinates c = new Coordinates();
+    private int x, y, gameId;
+    private String playerId;
     private Ship ship;
 
-    private static Coordinates c= new Coordinates();
-
-    public static Coordinates getCoordinates(){return c;}
+    public static Coordinates getCoordinates() {
+        return c;
+    }
 
     public int getX() {
         return x;
@@ -39,11 +41,11 @@ public class Coordinates {
         this.gameId = gameId;
     }
 
-    public int getPlayerId() {
+    public String getPlayerId() {
         return playerId;
     }
 
-    public void setPlayerId(int playerId) {
+    public void setPlayerId(String playerId) {
         this.playerId = playerId;
     }
 
@@ -55,7 +57,7 @@ public class Coordinates {
         this.ship = ship;
     }
 
-    public List showCoordinates(){
+    public List showCoordinates() {
         List coordinates = new ArrayList();
         coordinates.add(gameId);
         coordinates.add(playerId);

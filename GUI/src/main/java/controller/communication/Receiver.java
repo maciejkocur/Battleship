@@ -1,7 +1,7 @@
 package controller.communication;
 
 
-import model.Player;
+import model.client.Client;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -19,18 +19,18 @@ public class Receiver {
         return rest.getForObject(initializationUri, Boolean.class);
     }
 
-    public static Player whoseTurn() {
+    public static Client whoseTurn() {
         RestTemplate rest = new RestTemplate();
-        return rest.getForObject(turnUri, Player.class);
-    }
-
-    public Boolean wasShot() {
-        RestTemplate rest = new RestTemplate();
-        return rest.getForObject(shotUri, Boolean.class);
+        return rest.getForObject(turnUri, Client.class);
     }
 
     public static Boolean isWon() {
         RestTemplate rest = new RestTemplate();
         return rest.getForObject(winUri, Boolean.class);
+    }
+
+    public Boolean wasShot() {
+        RestTemplate rest = new RestTemplate();
+        return rest.getForObject(shotUri, Boolean.class);
     }
 }

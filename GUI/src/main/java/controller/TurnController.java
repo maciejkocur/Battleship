@@ -1,19 +1,19 @@
 package controller;
 
-import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
 
 /**
  * Created by bartlomiej on 05.08.16.
  */
 public class TurnController {
 
-    @FXML
-    public void opponentsTurn() {
 
+    public void opponentsTurn(Pane pane) {
+        pane.toFront();
     }
 
-    @FXML
-    public void yourTurn() {
 
+    public void yourTurn(Pane pane) {
+        pane.toBack();
     }
 }
