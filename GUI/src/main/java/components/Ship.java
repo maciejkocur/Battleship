@@ -5,13 +5,10 @@ import javafx.geometry.Point2D;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 
-public class Ship extends AnchorPane {
-
-
-    private Point2D mDragOffset = new Point2D(0.0, 0.0);
-
+public class Ship extends AnchorPane implements Serializable, Cloneable {
 
     public Ship() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ships/ship.fxml"));
@@ -25,4 +22,9 @@ public class Ship extends AnchorPane {
         }
     }
 
+
+    @Override
+    public Ship clone() {
+        return new Ship();
+    }
 }

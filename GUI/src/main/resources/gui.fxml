@@ -1,214 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<?import components.Ship?>
-<Pane onMouseReleased="#stopDragging" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GuiController">
-   <children>
-      <ImageView pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/Background..png" />
-         </image>
-         <viewport>
-            <Rectangle2D width="42.0" />
-         </viewport>
-      </ImageView>
-      <Pane id="shipBoard"  layoutX="100.0" layoutY="50.0">
-         <children>
-            <ImageView pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/Grid..png" />
-               </image>
-            </ImageView>
-            <GridPane prefHeight="400.0" prefWidth="400.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+<AnchorPane fx:id="rootPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GuiController">
+    <children>
+        <ImageView pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assets/Background..png" />
+            </image>
+            <viewport>
+                <Rectangle2D width="42.0" />
+            </viewport>
+        </ImageView>
+        <Pane layoutX="100.0" layoutY="50.0" prefHeight="420.0" prefWidth="420.0">
+            <children>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/Grid.png" />
+                    </image>
+                </ImageView>
+                <GridPane fx:id="userBoard" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="400.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
 
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-         </children>
-      </Pane>
-      <Pane layoutX="700.0" layoutY="50.0">
-         <children>
-            <ImageView pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/Grid..png" />
-               </image>
-            </ImageView>
-            <GridPane opacity="1.0" prefHeight="420.0" prefWidth="420.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-      
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                  
+                    </columnConstraints>
+                    <rowConstraints>
                         <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="1" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="2" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="3" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="4" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="5" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="6" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="7" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="8" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="9" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="10" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="10" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="10" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="10" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="10" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="10" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="10" />
-                   <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="10" GridPane.rowIndex="10" />
-               </children>
-            </GridPane>
-         </children>
-      </Pane>
-      <Pane layoutX="100.0" layoutY="500.0">
-         <children>
-            <ImageView pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/ShipContainer.png" />
-               </image>
-            </ImageView>
-            <Ship onMousePressed="#grabbing" onMouseDragged="#dragging"  />
-         </children>
-      </Pane>
-   </children>
-</Pane>
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                </GridPane>
+            </children>
+        </Pane>
+        <Pane layoutX="700.0" layoutY="50.0">
+            <children>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/Grid.png" />
+                    </image>
+                </ImageView>
+                <GridPane layoutX="10.0" layoutY="9.0" opacity="1.0" prefHeight="420.0" prefWidth="420.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                  <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+
+                  <RowConstraints />
+                    </rowConstraints>
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+                        <Button mnemonicParsing="false" onAction="#fireAway" opacity="0.0" prefHeight="40.0" prefWidth="40.0" styleClass="buttons" stylesheets="@buttons.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    </children>
+                </GridPane>
+            </children>
+        </Pane>
+        <Pane fx:id="shipsContainer" layoutX="100.0" layoutY="500.0">
+            <children>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/ShipContainer.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
