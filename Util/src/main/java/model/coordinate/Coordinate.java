@@ -11,11 +11,11 @@ public class Coordinate implements Comparable<Coordinate> {
         this.digit = digit;
     }
 
-    public Sign showSign(){
+    public Sign showSign() {
         return sign;
     }
 
-    public Integer showDigit(){
+    public Integer showDigit() {
         return digit;
     }
 

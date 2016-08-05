@@ -1,11 +1,9 @@
 package model.coordinate;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static model.coordinate.Sign.A;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
 
 public class CoordinateTest {
 
@@ -28,7 +26,7 @@ public class CoordinateTest {
     }
 
     @Test
-    public void testEqualityOfHashCodes(){
+    public void testEqualityOfHashCodes() {
         // given
         Coordinate firstCoordinateA1 = new Coordinate(A, 1);
         Coordinate secondCoordinateA1 = new Coordinate(A, 1);

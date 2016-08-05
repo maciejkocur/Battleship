@@ -1,34 +1,14 @@
 package controller.turn;
 
-import model.player.Player;
+import model.client.Client;
 
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Queue;
+/**
+ * Created by lucz on 01.08.16.
+ */
+public interface TurnProvider {
+    Client getCurrentPlayer();
 
-public class TurnProvider {
+    Client getNextPlayer();
 
-    private Queue<Player> turnQueue;
-
-    private TurnProvider(Queue<Player> turnQueue) {
-        this.turnQueue = turnQueue;
-    }
-
-    public static TurnProvider getTurnProvider(Player player1, Player player2) {
-        Queue<Player> turnQueue = new ArrayDeque<>();
-        turnQueue.addAll(Arrays.asList(player1, player2));
-        return new TurnProvider(turnQueue);
-    }
-
-
-    public Player getCurrentPlayer() {
-        return turnQueue.peek();
-    }
-
-    public Player getNextPlayer() {
-        Player currentPlayer = turnQueue.poll();
-        turnQueue.add(currentPlayer);
-        return turnQueue.peek();
-    }
-
+    void changeTurn();
 }

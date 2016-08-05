@@ -1,27 +1,18 @@
 package controller.arbiter;
 
 import model.coordinate.Coordinate;
+import model.client.Client;
+import model.ship.Ship;
 
-import java.util.ArrayList;
-import java.util.List;
+/**
+ * Created by lucz on 01.08.16.
+ */
+public interface Arbiter {
+    void registerShipForClient(Client client, Ship ship);
 
-public class Arbiter {
+    boolean isHit(Client client, Coordinate hitCoordinate);
 
-    private List<Coordinate> coordinates = new ArrayList<>();
+    boolean isLosing(Client client);
 
-    public void addCoordinates(List<Coordinate> coordinates) {
-        this.coordinates.addAll(coordinates);
-    }
-
-    boolean contains(Coordinate coordinates) {
-        return this.coordinates.contains(coordinates);
-    }
-
-    public boolean checkWinningCondition() {
-        return coordinates.size() == 0;
-    }
-
-    public boolean isHit(Coordinate coordinate) {
-        return coordinates.remove(coordinate);
-    }
+    void clientGaveUp(Client client);
 }

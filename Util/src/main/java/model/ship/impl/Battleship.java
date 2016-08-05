@@ -1,37 +1,38 @@
-package model.ship;
+package model.ship.impl;
 
 import model.coordinate.Coordinate;
-import org.apache.commons.collections.ListUtils;
+import model.ship.Ship;
+import org.apache.commons.collections4.ListUtils;
 
 import java.util.List;
 
 /**
- * Created by lucz on 01.08.16.
+ * Created by lucz on 18.07.16.
  */
-
-public class Ship {
+public class Battleship implements Ship {
 
     private volatile int hashcode = 0;
     private List<Coordinate> coordinates;
 
-
-    public Ship(List<Coordinate> coordinates) {
+    public Battleship(List<Coordinate> coordinates) {
         this.coordinates = coordinates;
     }
 
+    @Override
     public List<Coordinate> getCoordinates() {
         return coordinates;
     }
 
-    public Ship moveTo(List<Coordinate> newCoordinates) {
-        return new Ship(newCoordinates);
+    @Override
+    public Battleship moveTo(List<Coordinate> newCoordinates) {
+        return new Battleship(newCoordinates);
     }
 
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        Ship other = (Ship) object;
+        Battleship other = (Battleship) object;
         return ListUtils.isEqualList(coordinates, other.coordinates);
     }
 
