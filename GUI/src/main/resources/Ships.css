@@ -1,0 +1,6 @@
+.test{
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-image: url("assets/TwoFieldsTrireme.png");
+}
