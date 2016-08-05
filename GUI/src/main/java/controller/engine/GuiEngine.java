@@ -1,7 +1,9 @@
 package controller.engine;
 
-import controller.Receiver;
-import controller.Sender;
+import controller.TurnController;
+import controller.communication.Receiver;
+import controller.communication.Sender;
+import model.Player;
 
 /**
  * Created by bartlomiej on 04.08.16.
@@ -9,7 +11,18 @@ import controller.Sender;
 public class GuiEngine {
 
 
-    public void startGame(){
+    private TurnController turnController = new TurnController();
+
+    public void startGame() {
         Sender.sendPlayer();
+        if (Receiver.isInitialized()) {
+            while (!Receiver.isWon()) {
+                if (Receiver.whoseTurn() == Player.getPlayer())
+                    turnController.yourTurn();
+                else turnController.opponentsTurn();
+            }
+        }
     }
+
+
 }

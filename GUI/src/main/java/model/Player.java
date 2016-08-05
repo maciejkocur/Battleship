@@ -5,17 +5,19 @@ package model;
  */
 public class Player {
 
+    private static final Player p = new Player();
     private int id;
 
-    private static final Player p = new Player();
-
-    private Player(){
+    private Player() {
         generateID();
     }
 
-    public static Player getPlayer(){return p;};
-    public void generateID(){
-        this.id = (int)Math.random()*100;
+    public static Player getPlayer() {
+        return p;
+    }
+
+    public void generateID() {
+        this.id = (int) Math.random() * 100;
     }
 
     public int getID() {

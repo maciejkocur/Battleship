@@ -18,21 +18,19 @@ public class ShootController {
     private Coordinates coordinates;
 
     @FXML
-    private void fireAway(ActionEvent event){
-        Node source = (Node)event.getSource();
+    private void fireAway(ActionEvent event) {
+        Node source = (Node) event.getSource();
         currentPlayer = Player.getPlayer();
         source.setOpacity(1.0);
-        coordinates= Coordinates.getCoordinates();
+        coordinates = Coordinates.getCoordinates();
 
-        System.out.println("Hello " + "This is the row : "+GridPane.getRowIndex(source)+"\nAnd column: "+ GridPane.getColumnIndex(source));
+        System.out.println("Hello " + "This is the row : " + GridPane.getRowIndex(source) + "\nAnd column: " + GridPane.getColumnIndex(source));
         coordinates.setPlayerId(currentPlayer.getID());
         coordinates.setX(GridPane.getRowIndex(source));
         coordinates.setY(GridPane.getRowIndex(source));
 
         source.setDisable(true);
-        }
-
-
+    }
 
 
 }

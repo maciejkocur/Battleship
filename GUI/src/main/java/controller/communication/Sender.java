@@ -1,4 +1,4 @@
-package controller;
+package controller.communication;
 
 import model.Coordinates;
 import model.Player;
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Sender {
 
-    private static void sendCoordinates(){
+    private static void sendCoordinates() {
         Coordinates coord = Coordinates.getCoordinates();
         final String uri = "this will be the url";
 
@@ -24,10 +24,10 @@ public class Sender {
 
         RestTemplate rest = new RestTemplate();
 
-        rest.postForObject(uri,coordinates, ArrayList.class);
+        rest.postForObject(uri, coordinates, ArrayList.class);
     }
 
-    private static void sendShip(){
+    private static void sendShip() {
         final String uri = "url+ship";
 
         RestTemplate rest = new RestTemplate();
@@ -35,9 +35,9 @@ public class Sender {
         //rest.postForObject(uri, ship, Ship.class);
     }
 
-    public static void sendPlayer(){
+    public static void sendPlayer() {
         final String uri = "url";
         RestTemplate rest = new RestTemplate();
-        rest.postForObject(uri, Player.getPlayer(),Player.class);
+        rest.postForObject(uri, Player.getPlayer(), Player.class);
     }
 }
