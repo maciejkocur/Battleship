@@ -1,10 +1,8 @@
 package controller.communication;
 
 import components.ClientFactory;
-import components.Ship;
 import model.Coordinates;
-import model.client.Client;
-import org.springframework.web.client.RestTemplate;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +12,13 @@ import java.util.List;
  */
 public class Sender {
 
+    private static final String COORD_URI = "battleship/coordinates";
+    private static final String PLAYER_URI = "battleship/player";
+    private static Logger senderLog = Logger.getLogger(Sender.class);
+
     private static void sendCoordinates() {
         Coordinates coord = Coordinates.getCoordinates();
-        final String uri = "this will be the url";
+
 
         List coordinates = new ArrayList();
         coordinates.add(coord.getGameId());
@@ -24,22 +26,20 @@ public class Sender {
         coordinates.add(coord.getX());
         coordinates.add(coord.getY());
 
-        RestTemplate rest = new RestTemplate();
-
-        rest.postForObject(uri, coordinates, ArrayList.class);
+        senderLog.info("The coordinates for this game have been sent." +
+                "\nThe coordinates are:" +
+                "\nGameId: " + coord.getGameId() +
+                "\nPlayerId: " + coord.getPlayerId() +
+                "\nX: " + coord.getX() +
+                "\nY: " + coord.getY() +
+                "\non URI: " + COORD_URI);
     }
 
-    private static void sendShip(Ship ship) {
-        final String uri = "url+ship";
-
-        RestTemplate rest = new RestTemplate();
-
-        rest.postForObject(uri, ship, Ship.class);
-    }
 
     public static void sendPlayer() {
-        final String uri = "url";
-        RestTemplate rest = new RestTemplate();
-        rest.postForObject(uri, ClientFactory.getClient(), Client.class);
+        senderLog.info("The Player ID has been sent." +
+                "\nID: " + ClientFactory.getClient() +
+                "\non URI: " + PLAYER_URI);
+
     }
 }

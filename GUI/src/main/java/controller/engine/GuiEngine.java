@@ -4,12 +4,15 @@ import components.ClientFactory;
 import controller.TurnController;
 import controller.communication.Receiver;
 import controller.communication.Sender;
+import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
 
 /**
  * Created by bartlomiej on 04.08.16.
  */
 public class GuiEngine {
-
+    @FXML
+    public Pane cover;
 
     private TurnController turnController = new TurnController();
 
@@ -18,8 +21,8 @@ public class GuiEngine {
         if (Receiver.isInitialized()) {
             while (!Receiver.isWon()) {
                 if (Receiver.whoseTurn() == ClientFactory.getClient())
-                    turnController.yourTurn();
-                else turnController.opponentsTurn();
+                    turnController.yourTurn(cover);
+                else turnController.opponentsTurn(cover);
             }
         }
     }

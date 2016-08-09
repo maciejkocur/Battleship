@@ -1,7 +1,9 @@
 package controller.communication;
 
 
+import components.ClientFactory;
 import model.client.Client;
+import org.apache.log4j.Logger;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -9,28 +11,35 @@ import org.springframework.web.client.RestTemplate;
  */
 public class Receiver {
 
-    private final static String initializationUri = "";
-    private final static String turnUri = "";
-    private final static String shotUri = "";
-    private final static String winUri = "";
+    private static final Logger receiverLog = Logger.getLogger(Receiver.class);
+
+    private final static String INITIALIZATION_URI = "battleship/init";
+    private final static String TURN_URI = "battleship/turn";
+    private final static String SHOT_URI = "battleship/shot";
+    private final static String WIN_URI = "battleship/win";
 
     public static Boolean isInitialized() {
-        RestTemplate rest = new RestTemplate();
-        return rest.getForObject(initializationUri, Boolean.class);
+        receiverLog.info("The information if the game is initialized has been received." +
+                "\nFrom URI: " + INITIALIZATION_URI);
+        return true;
     }
 
     public static Client whoseTurn() {
-        RestTemplate rest = new RestTemplate();
-        return rest.getForObject(turnUri, Client.class);
+        receiverLog.info("The information in form of the player has been received." +
+                "\nFrom URI: " + TURN_URI +
+                "\nCurrent player turn is:" + ClientFactory.getClient());
+        return ClientFactory.getClient();
     }
 
     public static Boolean isWon() {
-        RestTemplate rest = new RestTemplate();
-        return rest.getForObject(winUri, Boolean.class);
+        receiverLog.info("The information is the game has been won has been received." +
+                "\nFrom URI: " +WIN_URI);
+        return true;
     }
 
     public Boolean wasShot() {
-        RestTemplate rest = new RestTemplate();
-        return rest.getForObject(shotUri, Boolean.class);
+        receiverLog.info("The information if the ship was hit has been received." +
+                "\nFrom URI: " +SHOT_URI);
+        return false;
     }
 }

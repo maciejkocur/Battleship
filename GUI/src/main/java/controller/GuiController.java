@@ -23,8 +23,7 @@ public class GuiController {
     public GridPane userBoard;
     @FXML
     public AnchorPane rootPane;
-    @FXML
-    public Pane cover;
+
 
     private Ship invship;
     private Ship movableShip;
