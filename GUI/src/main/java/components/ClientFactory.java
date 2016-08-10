@@ -9,11 +9,12 @@ import java.util.UUID;
  */
 public class ClientFactory {
 
+
+
     private static Client client = new Client(UUID.randomUUID());
 
     public static Client getClient() {
         return client;
     }
 
-
-}
+    }

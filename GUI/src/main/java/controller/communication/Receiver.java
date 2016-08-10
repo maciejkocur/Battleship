@@ -45,6 +45,7 @@ public class Receiver {
         try {
             return httpHelper.httpHelper(INITIALIZATION_URI).getString("isInitialized").equals("true");
         } catch (IOException ioE) {
+            receiverLog.error("IOException",ioE);
             return false;
         }
     }
@@ -55,6 +56,7 @@ public class Receiver {
         try {
             return new Client(UUID.fromString(httpHelper.httpHelper(TURN_URI).getString("UUID")));
         } catch (IOException ioE) {
+            receiverLog.error("IOException",ioE);
             return ClientFactory.getClient();
         }
     }
@@ -65,6 +67,7 @@ public class Receiver {
         try {
             return httpHelper.httpHelper(WIN_URI).getString("isWon").equals("won");
         } catch (IOException ioE) {
+            receiverLog.error("IOException",ioE);
             return false;
         }
     }
@@ -75,6 +78,7 @@ public class Receiver {
         try {
             return httpHelper.httpHelper(SHOT_URI).getString("isShot").equals("true");
         } catch (IOException ioE) {
+            receiverLog.error("IOException",ioE);
             return false;
         }
     }
