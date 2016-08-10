@@ -12,12 +12,20 @@
         <File name="ReceiverLog" fileName="logs/receiver.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
+        <File name="SenderLog" fileName="logs/sender.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
     </Appenders>
 
     <Loggers>
         <Logger name="controller" level="info" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="ReceiverLog"/>
+            <AppenderRef ref="SenderLog"/>
+        </Logger>
+        <Logger name="controller" level="error" additivity="false">
+            <AppenderRef ref="ReceiverLog"/>
+            <AppenderRef ref="SenderLog"/>
         </Logger>
 
         <Root level="error">

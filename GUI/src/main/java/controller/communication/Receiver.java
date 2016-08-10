@@ -85,7 +85,7 @@ public class Receiver {
 
     private class HttpHelper {
         private JSONObject httpHelper(String uri) throws IOException {
-            httpGet = new HttpGet(TURN_URI);
+            httpGet = new HttpGet(uri);
             httpResponse = httpClient.execute(httpGet);
             reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
             sb = new StringBuilder();
