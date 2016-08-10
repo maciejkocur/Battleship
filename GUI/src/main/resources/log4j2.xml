@@ -9,11 +9,15 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
+        <File name="ReceiverLog" fileName="logs/receiver.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
     </Appenders>
 
     <Loggers>
-        <Logger name="pl.codingbad.*" level="info" additivity="false">
+        <Logger name="controller" level="info" additivity="false">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="ReceiverLog"/>
         </Logger>
 
         <Root level="error">
