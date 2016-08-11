@@ -2,7 +2,7 @@
 <Configuration status="info" name="Core_config">
 
     <Properties>
-        <Property name="filename">target/core_out.log</Property>
+        <Property name="filename">logs/core_out.log</Property>
     </Properties>
 
     <Appenders>
@@ -12,7 +12,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="controller.*" level="info" additivity="false">
+        <Logger name="engine" level="info" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
 

@@ -7,13 +7,26 @@
     <name>Battleships</name>
 
     <properties>
+        <!-- project properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.version>1.1</project.version>
+        <project.version>1.2</project.version>
+        <project.source.version>1.8</project.source.version>
+        <project.target.version>1.8</project.target.version>
+
+        <!-- dependency properties -->
         <apache.commons.version>3.4</apache.commons.version>
         <commons.collections.version>4.1</commons.collections.version>
         <testng.version>6.9.10</testng.version>
         <mockito.version>1.9.5</mockito.version>
         <log4j.version>2.6.2</log4j.version>
+
+        <!-- plugin properties -->
+        <compiler.plugin.version>2.3.1</compiler.plugin.version>
+        <surefire.plugin.version>2.15</surefire.plugin.version>
+        <jacoco.plugin.version>0.7.7.201606060606</jacoco.plugin.version>
+
+        <jacoco.instruction.cover.ratio>0.90</jacoco.instruction.cover.ratio>
+        <jacoco.line.cover.ratio>0.60</jacoco.line.cover.ratio>
     </properties>
 
     <groupId>pl.codingbad</groupId>
@@ -28,6 +41,7 @@
     </modules>
 
     <dependencies>
+        <!-- test dependencies -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -47,6 +61,13 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacoco.plugin.version}</version>
+        </dependency>
+
+        <!-- logging dependencies -->
+        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${log4j.version}</version>
@@ -59,6 +80,7 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- commons dependencies -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -71,18 +93,74 @@
             <version>${commons.collections.version}</version>
         </dependency>
 
-
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <excludes>
+                                        <exclude>*Test</exclude>
+                                        <exclude>battle-ships-gui</exclude>
+                                    </excludes>
+                                    <limits>
+                                        <limit>
+                                            <counter>INSTRUCTION</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>${jacoco.instruction.cover.ratio}</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>${jacoco.line.cover.ratio}</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.plugin.version}</version>
+                <configuration>
+                    <runOrder>random</runOrder>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${project.source.version}</source>
+                    <target>${project.target.version}</target>
                 </configuration>
             </plugin>
         </plugins>
