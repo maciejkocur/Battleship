@@ -11,6 +11,8 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <name>Battleship Util</name>
+
     <groupId>pl.codingbad</groupId>
     <artifactId>battle-ships-util</artifactId>
     <version>${project.version}</version>
