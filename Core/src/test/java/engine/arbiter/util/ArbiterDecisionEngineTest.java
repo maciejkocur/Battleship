@@ -1,7 +1,7 @@
-package controller.arbiter.util;
+package engine.arbiter.util;
 
-import model.coordinate.Coordinate;
 import model.client.Client;
+import model.coordinate.Coordinate;
 import model.ship.Ship;
 import model.ship.impl.Battleship;
 import org.testng.annotations.AfterMethod;
@@ -33,62 +33,61 @@ public class ArbiterDecisionEngineTest {
     }
 
     @Test
-    public void addCoordinatesTest() {
-        // Given
+    public void testAddCoordinates() {
+        // given
         ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
         Client player = new Client(UUID.randomUUID());
 
-        // When
+        // when
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
 
-        // Then
+        // then
         assertTrue(arbiterDecisionEngine.contains(player, new Coordinate(A, 1)));
         assertFalse(arbiterDecisionEngine.contains(player, new Coordinate(D, 10)));
     }
 
     @Test
-    public void winningConditionNotOccursTest() {
-        // Given
+    public void testIfWinningConditionNotHappening() {
+        // given
         ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
         Client player = new Client(UUID.randomUUID());
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
 
-        // When
-        arbiterDecisionEngine.isHit(player, new Coordinate(D, 1));
+        // when
+        arbiterDecisionEngine.isClientsShipIsHit(player, new Coordinate(D, 1));
 
-        // Then
-        assertFalse(arbiterDecisionEngine.checkWinningConditionForClient(player));
+        // then
+        assertFalse(arbiterDecisionEngine.checkLoosingConditionForClient(player));
     }
 
     @DataProvider
-    Object[][] playerHitsProvider() {
+    Object[][] hitsProvider() {
         return new Object[][]{{true, new Coordinate(A, 1)},
                 {false, new Coordinate(D, 1)}};
     }
 
-    @Test(dependsOnMethods = "addCoordinatesTest", dataProvider = "playerHitsProvider")
-    public void ifPlayerHitShipTest(boolean decision, Coordinate playerHit) {
-        // Given
+    @Test(dependsOnMethods = "testAddCoordinates", dataProvider = "hitsProvider")
+    public void testIfClientsShipIsHit(boolean decision, Coordinate playerHit) {
+        // given
         ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
         Client player = new Client(UUID.randomUUID());
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
 
-        // When - Then
-        assertEquals(decision, arbiterDecisionEngine.isHit(player, playerHit));
+        // when - then
+        assertEquals(decision, arbiterDecisionEngine.isClientsShipIsHit(player, playerHit));
         assertFalse(arbiterDecisionEngine.contains(player, playerHit));
     }
 
-    @Test(dependsOnMethods = "ifPlayerHitShipTest")
-    public void winningConditionOccursTest() {
-        // Given
+    @Test(dependsOnMethods = "testIfClientsShipIsHit")
+    public void testIfWinningConditionHappening() {
+        // given
         ArbiterDecisionEngine arbiterDecisionEngine = new ArbiterDecisionEngine();
         Client player = new Client(UUID.randomUUID());
         arbiterDecisionEngine.addCoordinatesFromShip(player, ship);
-        arbiterDecisionEngine.isHit(player, new Coordinate(A, 1));
+        arbiterDecisionEngine.isClientsShipIsHit(player, new Coordinate(A, 1));
 
-        // Then
-        assertTrue(arbiterDecisionEngine.checkWinningConditionForClient(player));
-
+        // when - then
+        assertTrue(arbiterDecisionEngine.checkLoosingConditionForClient(player));
     }
 
 

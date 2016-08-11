@@ -7,7 +7,7 @@ import static model.coordinate.Sign.*;
 import static org.testng.Assert.assertEquals;
 
 /**
- * Created by lucz on 18.07.16.
+ * Created by Ogre on 18.07.16.
  */
 public class SignTest {
 

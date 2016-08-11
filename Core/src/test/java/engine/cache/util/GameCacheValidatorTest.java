@@ -1,18 +1,18 @@
-package controller.cache.util;
+package engine.cache.util;
 
 import model.client.Client;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-/**@Override
- * Created by lucz on 02.08.16.
- */
 public class GameCacheValidatorTest {
 
     Map<UUID, Set<Client>> gameCache;
@@ -39,7 +39,20 @@ public class GameCacheValidatorTest {
     }
 
     @Test
-    public void testValidateAndUpdateWithOneClient() {
+    public void testValidateAndAddExistingGameID() {
+        // given
+        Client firstClient = new Client(UUID.randomUUID());
+        UUID gameID = UUID.randomUUID();
+
+        // when
+        GameCacheValidator.validateAndRegisterGameID(gameCache, gameID, firstClient);
+
+        // then
+        assertFalse(GameCacheValidator.validateAndRegisterGameID(gameCache, gameID, firstClient));
+    }
+
+    @Test
+    public void testValidateAndUpdateExistingGameWithOneClient() {
         // given
         Client firstClient = new Client(UUID.randomUUID());
         Client secondClient = new Client(UUID.randomUUID());
@@ -53,7 +66,7 @@ public class GameCacheValidatorTest {
     }
 
     @Test
-    public void testValidateAndUpdateWithTwoClients() {
+    public void testValidateAndUpdateExistingGameWithTwoClients() {
         // given
         Client firstClient = new Client(UUID.randomUUID());
         Client secondClient = new Client(UUID.randomUUID());
@@ -66,5 +79,15 @@ public class GameCacheValidatorTest {
 
         // then
         assertFalse(GameCacheValidator.validateAndAddNewClientToGameID(gameCache, gameID, thirdClient));
+    }
+
+    @Test
+    public void testValidateAndUpdateNonExistingGame() {
+        // given
+        Client firstClient = new Client(UUID.randomUUID());
+        UUID gameID = UUID.randomUUID();
+
+        // when - then
+        assertFalse(GameCacheValidator.validateAndAddNewClientToGameID(gameCache, gameID, firstClient));
     }
 }

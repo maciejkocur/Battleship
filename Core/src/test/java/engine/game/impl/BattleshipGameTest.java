@@ -1,7 +1,7 @@
-package controller.game.impl;
+package engine.game.impl;
 
-import model.coordinate.Coordinate;
 import model.client.Client;
+import model.coordinate.Coordinate;
 import model.ship.Ship;
 import model.ship.impl.Battleship;
 import org.apache.commons.collections4.SetUtils;
@@ -16,9 +16,6 @@ import static model.coordinate.Sign.*;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-/**
- * Created by lucz on 01.08.16.
- */
 public class BattleshipGameTest {
 
     private BattleshipGame battleshipGame;
@@ -34,13 +31,26 @@ public class BattleshipGameTest {
     }
 
     @Test
-    public void testCreateGame() {
+    public void testCreateNewGame() {
         // given
         UUID gameID = UUID.randomUUID();
         Client client = new Client(UUID.randomUUID());
 
         // when - then
         assertTrue(battleshipGame.createGame(gameID, client));
+    }
+
+    @Test
+    public void testCreateNewGameTwoTimes() {
+        // given
+        UUID gameID = UUID.randomUUID();
+        Client client = new Client(UUID.randomUUID());
+
+        // when
+        battleshipGame.createGame(gameID, client);
+
+        // then
+        assertFalse(battleshipGame.createGame(gameID, client));
     }
 
     @Test
@@ -116,7 +126,7 @@ public class BattleshipGameTest {
         assertTrue(battleshipGame.joinGame(gameID, newClient));
     }
 
-    @Test (dataProvider = "getShips")
+    @Test(dataProvider = "getShips")
     public void testAbandonGame(List<Ship> ships) {
         // given
         UUID gameID = UUID.randomUUID();
@@ -133,5 +143,19 @@ public class BattleshipGameTest {
         assertTrue(battleshipGame.abandonGame(gameID, newClient));
     }
 
+    @Test
+    public void testLeaveGame(){
+        // given
+        UUID gameID = UUID.randomUUID();
+        Client gameOwner = new Client(UUID.randomUUID());
+        Client newClient = new Client(UUID.randomUUID());
+
+        // when
+        battleshipGame.createGame(gameID, gameOwner);
+        battleshipGame.joinGame(gameID, newClient);
+
+        // then
+        assertTrue(battleshipGame.leaveGame(gameID, gameOwner));
+    }
 
 }

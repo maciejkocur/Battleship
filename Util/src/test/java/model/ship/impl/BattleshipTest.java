@@ -8,16 +8,71 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static model.coordinate.Sign.A;
-import static model.coordinate.Sign.B;
-import static model.coordinate.Sign.C;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static model.coordinate.Sign.*;
+import static org.testng.Assert.*;
 
 /**
- * Created by lucz on 18.07.16.
+ * Created by Ogre on 18.07.16.
  */
 public class BattleshipTest {
+
+    @Test
+    public void testEqualityOfShips() {
+        // given
+        Ship firstShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
+        Ship secondShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
+        Ship thirdShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
+
+        // when - then
+        // reflexive
+        assertEquals(firstShip, firstShip);
+        // symmetric
+        assertEquals(firstShip, secondShip);
+        assertEquals(secondShip, firstShip);
+        // transitive
+        assertEquals(firstShip, thirdShip);
+    }
+
+    @Test
+    public void testInequalityOfShips() {
+        // given
+        Ship firstShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
+        Ship secondShip = new Battleship(Arrays.asList(new Coordinate(B, 6)));
+
+        // when - then
+        assertNotEquals(firstShip, secondShip);
+    }
+
+    @Test
+    public void testInequalityOfShipAndNull() {
+        // given
+        Ship firstShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
+        Ship secondShip = null;
+
+        // when - then
+        assertNotEquals(firstShip, secondShip);
+    }
+
+    @Test
+    public void testInequalityOfShipAndObject() {
+        // given
+        Ship firstShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
+        Object object = new Object();
+
+        // when - then
+        assertNotEquals(firstShip, object);
+    }
+
+    @Test
+    public void testEqualityOfHashCodesOfShips() {
+        // given
+        Ship firstShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
+        Ship secondShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
+
+        // when - then
+        assertEquals(firstShip.hashCode(), firstShip.hashCode());
+        assertEquals(firstShip.hashCode(), secondShip.hashCode());
+    }
 
     @Test
     public void testGetShipCoordinates() {
@@ -41,25 +96,6 @@ public class BattleshipTest {
 
         // then
         assertTrue(ListUtils.isEqualList(ship.getCoordinates(), endCoordinates));
-
-    }
-
-    @Test
-    public void testEqualityOfShips() {
-        // given
-        Ship firstShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
-        Ship secondShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
-        Ship thirdShip = new Battleship(Arrays.asList(new Coordinate(A, 1)));
-
-        // when - then
-        // reflexive
-        assertEquals(firstShip, firstShip);
-        // symmetric
-        assertEquals(firstShip, secondShip);
-        assertEquals(secondShip, firstShip);
-        // transitive
-        assertEquals(firstShip, thirdShip);
-
     }
 
 
