@@ -6,6 +6,12 @@
 
     <name>Battleships</name>
 
+    <description>
+        Battleship game dedicated on PC platform. Game is based on standard rules like 10x10 board size
+        and 4 types of ships – 4 field size, 3 field size, 2 field size and 1 field size. Only human players can play
+        this game(AI excluded). Game have graphical interface.
+    </description>
+
     <properties>
         <!-- project properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
