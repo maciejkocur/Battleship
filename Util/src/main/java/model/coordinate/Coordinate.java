@@ -1,6 +1,10 @@
 package model.coordinate;
 
-
+/**
+ * Representation of coordinates on battleship board.
+ *
+ * @author kuba
+ */
 public class Coordinate implements Comparable<Coordinate> {
 
     private Integer digit;
@@ -11,10 +15,20 @@ public class Coordinate implements Comparable<Coordinate> {
         this.digit = digit;
     }
 
+    /**
+     * Returns {@link Sign} of coordinate object
+     *
+     * @return sign of coordinate
+     */
     public Sign showSign() {
         return sign;
     }
 
+    /**
+     * Returns {@link Integer} of coordinate object
+     *
+     * @return digit of coordinate
+     */
     public Integer showDigit() {
         return digit;
     }

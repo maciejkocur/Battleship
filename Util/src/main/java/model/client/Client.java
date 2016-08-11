@@ -2,6 +2,11 @@ package model.client;
 
 import java.util.UUID;
 
+/**
+ * Representation of game client
+ *
+ * @author Ogre
+ */
 public class Client {
 
     private UUID clientID;
@@ -12,14 +17,34 @@ public class Client {
         this.isReady = false;
     }
 
+    /**
+     * Returns {@link UUID} - clientsID
+     *
+     * @return id of client
+     */
+    public UUID showID() {
+        return clientID;
+    }
+
+    /**
+     * Returns clients status
+     *
+     * @return true if client is ready, false if not
+     */
     public boolean isReady() {
         return isReady;
     }
 
+    /**
+     * Change status of client to ready
+     */
     public void ready() {
         this.isReady = true;
     }
 
+    /**
+     * Change status of client to not ready
+     */
     public void notReady() {
         this.isReady = false;
     }
@@ -37,11 +62,6 @@ public class Client {
     @Override
     public int hashCode() {
         return clientID.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(clientID);
     }
 
 }

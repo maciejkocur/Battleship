@@ -11,10 +11,18 @@ import static model.coordinate.Sign.A;
 import static model.coordinate.Sign.J;
 
 /**
- * Created by lucz on 18.07.16.
+ * Computes list of {@link Coordinate}s around {@link Ship}
+ *
+ * @author Ogre
  */
 public class BattleshipAreaResolver {
 
+    /**
+     * Computes list of {@link Coordinate}s around {@link Ship}
+     *
+     * @param ship for which nearby coordinates will be computed
+     * @return list of coordinates around the ship
+     */
     public static List<Coordinate> findCoordinatesAroundShip(Ship ship) {
         Set<Coordinate> allCoordinates = new HashSet<>();
         for (Coordinate shipCoordinate : ship.getCoordinates()) {

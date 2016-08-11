@@ -7,7 +7,9 @@ import org.apache.commons.collections4.ListUtils;
 import java.util.List;
 
 /**
- * Created by lucz on 18.07.16.
+ * Representation of battleship. Implements {@link Ship} interface
+ *
+ * @author Ogre
  */
 public class Battleship implements Ship {
 
@@ -18,11 +20,17 @@ public class Battleship implements Ship {
         this.coordinates = coordinates;
     }
 
+    /**
+     * @see Ship
+     */
     @Override
     public List<Coordinate> getCoordinates() {
         return coordinates;
     }
 
+    /**
+     * @see Ship
+     */
     @Override
     public Battleship moveTo(List<Coordinate> newCoordinates) {
         return new Battleship(newCoordinates);

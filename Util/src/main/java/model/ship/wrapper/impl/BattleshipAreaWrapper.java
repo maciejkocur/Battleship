@@ -9,7 +9,9 @@ import org.apache.commons.collections4.ListUtils;
 import java.util.List;
 
 /**
- * Created by lucz on 18.07.16.
+ * Representation of fields (list of {@link Coordinate}) around ship. Specific implementation of {@link ShipAreaWrapper}
+ *
+ * @author Ogre
  */
 public class BattleshipAreaWrapper implements ShipAreaWrapper {
     private volatile int hashCode = 0;
@@ -19,6 +21,9 @@ public class BattleshipAreaWrapper implements ShipAreaWrapper {
         coordinatesAroundShip = BattleshipAreaResolver.findCoordinatesAroundShip(ship);
     }
 
+    /**
+     * @see ShipAreaWrapper
+     */
     @Override
     public List<Coordinate> getCoordinatesAroundShip() {
         return coordinatesAroundShip;
