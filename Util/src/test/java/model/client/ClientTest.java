@@ -6,9 +6,6 @@ import java.util.UUID;
 
 import static org.testng.Assert.*;
 
-/**
- * Created by kuba on 18.07.16.
- */
 public class ClientTest {
 
     @Test

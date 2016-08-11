@@ -16,9 +16,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertTrue;
 
-/**
- * Created by Ogre on 18.07.16.
- */
 public class BattleshipAreaWrapperTest {
 
     @Test

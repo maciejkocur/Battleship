@@ -11,9 +11,6 @@ import java.util.List;
 import static model.coordinate.Sign.*;
 import static org.testng.Assert.*;
 
-/**
- * Created by Ogre on 18.07.16.
- */
 public class BattleshipTest {
 
     @Test

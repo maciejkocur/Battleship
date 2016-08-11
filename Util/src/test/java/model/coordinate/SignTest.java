@@ -6,9 +6,6 @@ import org.testng.annotations.Test;
 import static model.coordinate.Sign.*;
 import static org.testng.Assert.assertEquals;
 
-/**
- * Created by Ogre on 18.07.16.
- */
 public class SignTest {
 
     @DataProvider
