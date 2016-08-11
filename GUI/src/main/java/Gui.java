@@ -3,13 +3,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-/**
- * Created by DELL on 2016-07-18.
- */
+
 public class Gui extends Application {
+
+    private static Logger logger = LogManager.getLogger(Gui.class);
 
     public static void main(String[] args) {
         launch(args);
@@ -19,14 +21,13 @@ public class Gui extends Application {
     public void start(Stage primaryStage) throws Exception {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("gui.fxml"));
-
             Scene scene = new Scene(root, 1200, 800);
             primaryStage.setResizable(false);
             primaryStage.setTitle("Battleship");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 }

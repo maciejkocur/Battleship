@@ -5,9 +5,6 @@ import org.apache.commons.collections.ListUtils;
 
 import java.util.List;
 
-/**
- * Created by lucz on 18.07.16.
- */
 public class Ship {
 
     private volatile int hashcode = 0;

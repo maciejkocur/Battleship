@@ -3,16 +3,12 @@ package model.coordinate;
 import java.util.Arrays;
 import java.util.Optional;
 
-/**
- * Created by Hawk on 2016-07-15.
- */
 public enum Sign {
     A(0) , B(1), C(2), D(3), E(4), F(5), G(6), H(7), I(8), J(9);
 
     private int ID;
 
     private static Sign[] values = values();
-
 
     Sign(int ID) {
         this.ID = ID;

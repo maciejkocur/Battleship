@@ -10,9 +10,6 @@ import java.util.*;
 import static model.coordinate.Sign.A;
 import static model.coordinate.Sign.J;
 
-/**
- * Created by lucz on 18.07.16.
- */
 public class ShipAreaResolver {
 
     public static List<Coordinate> findCoordinatesAroundShip(Ship ship) {

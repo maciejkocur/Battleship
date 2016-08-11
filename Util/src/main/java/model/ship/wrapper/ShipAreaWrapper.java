@@ -7,9 +7,7 @@ import org.apache.commons.collections.ListUtils;
 
 import java.util.List;
 
-/**
- * Created by lucz on 18.07.16.
- */
+
 public class ShipAreaWrapper {
     private volatile int hashCode = 0;
     private Ship ship;

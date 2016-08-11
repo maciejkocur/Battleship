@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Ship extends AnchorPane implements Serializable, Cloneable {
 
-    private static Logger log = LogManager.getLogger(Ship.class);
+    private static Logger logger = LogManager.getLogger(Ship.class);
     private int size = 2;
     private List<Coordinate> coordinates = new ArrayList<>();
     private Orientation orientation = Orientation.Vertical;
@@ -50,7 +50,7 @@ public class Ship extends AnchorPane implements Serializable, Cloneable {
         try {
             super.clone();
         } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return new Ship(this);
     }

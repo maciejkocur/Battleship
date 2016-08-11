@@ -17,9 +17,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-/**
- * Created by bartlomiej on 19.07.16.
- */
 public class GuiController {
     private static Logger log = LogManager.getLogger(GuiController.class);
     private final int BOARD_SIZE = 10;
