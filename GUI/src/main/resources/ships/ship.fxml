@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 <fx:root maxHeight="80.0" maxWidth="40.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="40.0"
-         stylesheets="@../Ships.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8"
+         stylesheets="@../Ships.css" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx/8"
          xmlns:fx="http://javafx.com/fxml/1">
     <styleClass>
         <String fx:value="test"/>

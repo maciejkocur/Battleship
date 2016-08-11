@@ -1,7 +1,9 @@
 package model.coordinate;
 
 
-public class Coordinate implements Comparable<Coordinate> {
+import java.io.Serializable;
+
+public class Coordinate implements Comparable<Coordinate>, Serializable {
 
     private Integer digit;
     private Sign sign;

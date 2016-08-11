@@ -5,124 +5,153 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.input.*;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DataFormat;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 /**
  * Created by bartlomiej on 19.07.16.
  */
 public class GuiController {
+    private static Logger log = LogManager.getLogger(GuiController.class);
+    private final int BOARD_SIZE = 10;
     @FXML
-    public Pane shipsContainer;
+    public FlowPane shipsContainer;
     @FXML
     public GridPane userBoard;
     @FXML
     public AnchorPane rootPane;
 
-    private Ship invship;
+    private Ship invShip;
     private Ship movableShip;
     private DataFormat dataFormat = new DataFormat("Ship");
-    private EventHandler<DragEvent> shipDragOverRoot;
-    private EventHandler<DragEvent> shipDragDropped;
-    private EventHandler<DragEvent> shipDragOverUserBoard;
+
+    private int userBoardColumn;
+    private int userBoardRow;
+
 
     @FXML
     private void fireAway(ActionEvent event) {
         Node source = (Node) event.getSource();
         source.setOpacity(1.0);
-        System.out.println("Hello " + "This is the row : " + GridPane.getRowIndex(source) + "\nAnd column: " + GridPane.getColumnIndex(source));
+        log.info("Hello " + "This is the row : " + GridPane.getRowIndex(source) + "\nAnd column: " + GridPane.getColumnIndex(source));
         source.setDisable(true);
+    }
+
+    public void allShipsCoordinates() {
+        userBoard.getChildren().stream().filter(node -> node instanceof Ship).forEach(node -> {
+            Ship ship = (Ship) node;
+            log.info(ship.getCoordinates());
+        });
     }
 
     @FXML
     public void initialize() {
+
         userBoard.toFront();
         Ship ship = new Ship();
+        Ship ship1 = new Ship();
         shipsContainer.getChildren().add(ship);
+        shipsContainer.getChildren().add(ship1);
+
         addDragDetection(ship);
-        buildDragHandlers();
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                Pane label = new Pane();
-                label.setOnDragDropped(event -> {
-                    event.acceptTransferModes(TransferMode.ANY);
-                    System.out.println(GridPane.getRowIndex(label) + " " +GridPane.getColumnIndex(label));
-                });
-                userBoard.getChildren().add(label);
-                GridPane.setColumnIndex(label,i);
-                GridPane.setRowIndex(label,j);
-            }
-
-        }
-
+        addDragDetection(ship1);
+        userBoardInit();
+        rootPane.setOnDragOver(shipDragOverRoot());
+        rootPane.setOnDragDropped(shipOnDragDroppedOnRoot());
+        userBoard.setOnDragDropped(shipDragDropped());
     }
 
     private void addDragDetection(Ship ship) {
-
-        ship.setOnDragDetected(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("test");
-                rootPane.setOnDragOver(shipDragOverRoot);
-                userBoard.setOnDragOver(shipDragOverUserBoard);
-                userBoard.setOnDragDropped(shipDragDropped);
-
-                movableShip = (Ship) event.getSource();
-                invship = ((Ship) event.getSource()).clone();
-                rootPane.getChildren().add(invship);
-                System.out.println(invship);
-                ClipboardContent content = new ClipboardContent();
-                content.put(dataFormat, movableShip);
-                invship.relocate(event.getSceneX() - invship.getWidth() / 2, event.getSceneY() - invship.getHeight() / 4);
-                invship.setMouseTransparent(true);
-                invship.startDragAndDrop(TransferMode.ANY).setContent(content);
-                invship.setVisible(true);
-                invship.toFront();
-
-                movableShip.setVisible(false);
-                Pane group = (Pane) movableShip.getParent();
-                group.getChildren().remove(movableShip);
-                event.consume();
+        ship.setOnDragDetected(event -> {
+            log.info("Drag Detected");
+            movableShip = (Ship) event.getSource();
+            if (event.isSecondaryButtonDown()) {
+                movableShip.rotateShip();
             }
-        });
 
+            invShip = movableShip.clone();
+
+            rootPane.getChildren().add(invShip);
+            ClipboardContent content = new ClipboardContent();
+            content.put(dataFormat, movableShip);
+            invShip.relocate(event.getSceneX() - invShip.getMaxWidth() / 2, event.getSceneY() - invShip.getMaxWidth() / 4);
+            invShip.setMouseTransparent(true);
+            invShip.startDragAndDrop(TransferMode.ANY).setContent(content);
+            invShip.setVisible(true);
+            invShip.toFront();
+
+            Pane group = (Pane) movableShip.getParent();
+            group.getChildren().remove(movableShip);
+            event.consume();
+        });
     }
 
-    private void buildDragHandlers() {
 
-        shipDragOverRoot = new EventHandler<DragEvent>() {
+    private EventHandler<DragEvent> shipDragOverRoot() {
+        return event -> {
+            event.acceptTransferModes(TransferMode.ANY);
+            invShip.relocate(event.getSceneX() - invShip.getWidth() / 4, event.getSceneY() - invShip.getHeight() / 3);
+            event.consume();
+        };
+    }
 
-            @Override
-            public void handle(DragEvent event) {
-                event.acceptTransferModes(TransferMode.ANY);
-                invship.relocate(event.getSceneX() - invship.getWidth() / 2, event.getSceneY() - invship.getHeight() / 4);
+    private EventHandler<DragEvent> shipOnDragDroppedOnRoot() {
+        return event -> {
+            invShip.toBack();
+            rootPane.getChildren().remove(invShip);
+            shipsContainer.getChildren().add(movableShip);
+            movableShip.setVisible(true);
+            if (!movableShip.isOrientationVertical())
+                movableShip.rotateShip();
+            event.consume();
+        };
+    }
+
+    private EventHandler<DragEvent> shipDragDropped() {
+        return event -> {
+            event.acceptTransferModes(TransferMode.ANY);
+            invShip.toBack();
+            if ((movableShip.isOrientationVertical() ? userBoardRow : userBoardColumn) + movableShip.countToSpawn() < BOARD_SIZE) {
+                rootPane.getChildren().remove(invShip);
+                userBoard.getChildren().add(movableShip);
+                movableShip.generateCoordinates(userBoardColumn, userBoardRow);
+                GridPane.setRowIndex(movableShip, userBoardRow);
+                GridPane.setColumnIndex(movableShip, userBoardColumn);
+                if (movableShip.isOrientationVertical()) {
+                    GridPane.setRowSpan(movableShip, movableShip.countToSpawn() + 1);
+                    GridPane.setColumnSpan(movableShip, 1);
+                } else {
+                    GridPane.setRowSpan(movableShip, 1);
+                    GridPane.setColumnSpan(movableShip, movableShip.countToSpawn() + 1);
+                }
+                movableShip.setVisible(true);
                 event.consume();
             }
         };
+    }
 
-        shipDragOverUserBoard = new EventHandler<DragEvent>() {
-
-            @Override
-            public void handle(DragEvent event) {
-                event.acceptTransferModes(TransferMode.ANY);
-                invship.relocate(event.getSceneX() - invship.getWidth() / 2, event.getSceneY() - invship.getHeight() / 4);
-                event.consume();
+    private void userBoardInit() {
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                Pane label = new Pane();
+                label.setOnDragDropped(event -> {
+                    event.acceptTransferModes(TransferMode.ANY);
+                    userBoardColumn = GridPane.getColumnIndex(label);
+                    userBoardRow = GridPane.getRowIndex(label);
+                });
+                userBoard.getChildren().add(label);
+                GridPane.setColumnIndex(label, i);
+                GridPane.setRowIndex(label, j);
             }
-        };
-
-        shipDragDropped = new EventHandler<DragEvent>() {
-
-            @Override
-            public void handle(DragEvent event) {
-                event.acceptTransferModes(TransferMode.ANY);
-                event.consume();
-            }
-        };
-
-
+        }
     }
 }

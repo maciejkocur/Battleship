@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="info" name="Core_config">
+<Configuration status="info" name="Gui_Config">
 
     <Properties>
         <Property name="filename">target/core_out.log</Property>
@@ -12,7 +12,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="pl.codingbad.*" level="info" additivity="false">
+        <Logger name="controller" level="info" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
 
