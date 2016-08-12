@@ -1,13 +1,12 @@
 package model.ship;
 
 import model.coordinate.Coordinate;
-import model.ship.impl.Battleship;
 
 import java.util.List;
 
 /**
  * Basic behaviour of ship on game board
- *
+ * 
  * @author Ogre
  */
 public interface Ship {
