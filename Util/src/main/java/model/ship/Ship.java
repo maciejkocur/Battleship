@@ -1,44 +1,28 @@
 package model.ship;
 
 import model.coordinate.Coordinate;
-import org.apache.commons.collections.ListUtils;
+import model.ship.impl.Battleship;
 
 import java.util.List;
 
-public class Ship {
+/**
+ * Basic behaviour of ship on game board
+ *
+ * @author Ogre
+ */
+public interface Ship {
+    /**
+     * Returns list of ship coordinates
+     *
+     * @return list of ship coordinates
+     */
+    List<Coordinate> getCoordinates();
 
-    private volatile int hashcode = 0;
-    private List<Coordinate> coordinates;
-
-    public Ship(List<Coordinate> coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public List<Coordinate> getCoordinates() {
-        return coordinates;
-    }
-
-    public Ship moveTo(List<Coordinate> newCoordinates) {
-        return new Ship(newCoordinates);
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        Ship other = (Ship) object;
-        return ListUtils.isEqualList(coordinates, other.coordinates);
-    }
-
-    @Override
-    public int hashCode() {
-        if (hashcode == 0) {
-            int result = 19;
-            for (Coordinate coordinate : coordinates) {
-                result = 41 * result + coordinate.hashCode();
-            }
-        }
-        return hashcode;
-    }
-
+    /**
+     * Changes ship coordinates and returns new object
+     *
+     * @param newCoordinates list of new coordinates
+     * @return new instance of ship with new coordinates
+     */
+    Ship moveTo(List<Coordinate> newCoordinates);
 }

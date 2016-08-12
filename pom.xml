@@ -6,14 +6,37 @@
 
     <name>Battleships</name>
 
+    <description>
+        Battleship game dedicated on PC platform. Game is based on standard rules like 10x10 board size
+        and 4 types of ships – 4 field size, 3 field size, 2 field size and 1 field size. Only human players can play
+        this game(AI excluded). Game have graphical interface.
+    </description>
+
     <properties>
+        <!-- project properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.version>1.0</project.version>
-        <apache.commons.version>3.0</apache.commons.version>
-        <commons.collections.version>3.0</commons.collections.version>
-        <testng.version>6.8</testng.version>
+        <project.version>1.2</project.version>
+        <project.source.version>1.8</project.source.version>
+        <project.target.version>1.8</project.target.version>
+
+        <!-- dependency properties -->
+        <apache.commons.version>3.4</apache.commons.version>
+        <commons.collections.version>4.1</commons.collections.version>
+        <testng.version>6.9.10</testng.version>
         <mockito.version>1.9.5</mockito.version>
         <log4j.version>2.6.2</log4j.version>
+
+        <!-- plugin properties -->
+        <site.plugin.version>3.5.1</site.plugin.version>
+        <info.reports.plugin.version>2.9</info.reports.plugin.version>
+        <javadoc.plugin.version>2.10.4</javadoc.plugin.version>
+        <compiler.plugin.version>3.5.1</compiler.plugin.version>
+        <surefire.plugin.version>2.15</surefire.plugin.version>
+        <surefire.report.plugin.version>2.19.1</surefire.report.plugin.version>
+        <jacoco.plugin.version>0.7.7.201606060606</jacoco.plugin.version>
+
+        <jacoco.instruction.cover.ratio>0.90</jacoco.instruction.cover.ratio>
+        <jacoco.line.cover.ratio>0.60</jacoco.line.cover.ratio>
     </properties>
 
     <groupId>pl.codingbad</groupId>
@@ -28,6 +51,7 @@
     </modules>
 
     <dependencies>
+        <!-- test dependencies -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -47,6 +71,13 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacoco.plugin.version}</version>
+        </dependency>
+
+        <!-- logging dependencies -->
+        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${log4j.version}</version>
@@ -59,6 +90,7 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- commons dependencies -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -66,24 +98,163 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
             <version>${commons.collections.version}</version>
-            <scope>compile</scope>
         </dependency>
 
     </dependencies>
 
-    <build>
+    <distributionManagement>
+        <site>
+            <id>${project.artifactId}-site</id>
+            <url>${project.baseUri}</url>
+        </site>
+    </distributionManagement>
+
+    <reporting>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.1</version>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${site.plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <goal>stage</goal>
+                    <generateReports>true</generateReports>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${info.reports.plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                      <reports>
+                          <report>index</report>
+                          <report>summary</report>
+                          <report>dependency-info</report>
+                          <report>dependencies</report>
+                          <report>plugins</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc.plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${surefire.report.plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${site.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${surefire.plugin.version}</version>
+                    <configuration>
+                        <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                        <runOrder>random</runOrder>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${project.source.version}</source>
+                        <target>${project.target.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <excludes>
+                                        <exclude>*Test</exclude>
+                                        <exclude>battle-ships-gui</exclude>
+                                    </excludes>
+                                    <limits>
+                                        <limit>
+                                            <counter>INSTRUCTION</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>${jacoco.instruction.cover.ratio}</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>${jacoco.line.cover.ratio}</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

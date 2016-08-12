@@ -4,12 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <description>
+        This module contains classes which are common to others modules in the project.
+    </description>
+
     <parent>
         <groupId>pl.codingbad</groupId>
         <artifactId>battle-ships</artifactId>
         <version>${project.version}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+
+    <name>Battleship Util</name>
 
     <groupId>pl.codingbad</groupId>
     <artifactId>battle-ships-util</artifactId>
